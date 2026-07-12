@@ -21,6 +21,11 @@
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-64.png">
   <link rel="apple-touch-icon" href="assets/favicon-180.png">
   <meta name="theme-color" content="#26222A">
+  <meta name="geo.region" content="IN-BR">
+  <meta name="geo.placename" content="Bhagalpur">
+  <meta name="geo.position" content="25.2562906;86.9955132">
+  <meta name="ICBM" content="25.2562906, 86.9955132">
+  <meta property="og:locale" content="en_IN">
 
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://images.unsplash.com">
@@ -32,32 +37,162 @@
   <link rel="stylesheet" href="css/site.css">
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Hotel",
-    "name": "Hotel Chinmaye Inn",
-    "description": "Premium hotel in Bhagalpur, the Silk City — rooms & suites, Kesaria rooftop restaurant, Maya banquet & convention hall.",
-    "telephone": "+918877222233",
-    "email": "info@chinmaye.in",
-    "url": "https://kariwalbadal.github.io/chinmaye-inn/",
-    "image": "https://kariwalbadal.github.io/chinmaye-inn/assets/og.jpg",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "RBSR Path, Khanjarpur",
-      "addressLocality": "Bhagalpur",
-      "addressRegion": "Bihar",
-      "postalCode": "812001",
-      "addressCountry": "IN"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Hotel",
+      "@id": "https://kariwalbadal.github.io/chinmaye-inn/#hotel",
+      "name": "Hotel Chinmaye Inn",
+      "description": "Premium hotel in Bhagalpur, the Silk City — rooms & suites, Kesaria rooftop restaurant, Maya banquet & convention hall, minutes from Bhagalpur Junction.",
+      "url": "https://kariwalbadal.github.io/chinmaye-inn/",
+      "image": "https://kariwalbadal.github.io/chinmaye-inn/assets/og.jpg",
+      "telephone": "+918877222233",
+      "email": "info@chinmaye.in",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "RBSR Path, Khanjarpur",
+        "addressLocality": "Bhagalpur",
+        "addressRegion": "Bihar",
+        "postalCode": "812001",
+        "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 25.2562906,
+        "longitude": 86.9955132
+      },
+      "hasMap": "https://maps.app.goo.gl/Wm8hhCpK1s4CsVdu7",
+      "priceRange": "₹2,999–₹4,999",
+      "currenciesAccepted": "INR",
+      "paymentAccepted": "Cash, UPI, Cards",
+      "sameAs": [
+        "https://www.instagram.com/chinmayeinn"
+      ],
+      "parentOrganization": {
+        "@id": "https://kariwalbadal.github.io/chinmaye-group/#org"
+      },
+      "amenityFeature": [
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Free Wi-Fi",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Complimentary breakfast",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "24-hour reception",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Parking",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Station pickup & drop",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Room service",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Laundry",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Luggage storage",
+          "value": true
+        },
+        {
+          "@type": "LocationFeatureSpecification",
+          "name": "Air conditioning",
+          "value": true
+        }
+      ],
+      "containsPlace": [
+        {
+          "@type": "Restaurant",
+          "name": "Kesaria",
+          "servesCuisine": [
+            "North Indian",
+            "South Indian"
+          ],
+          "description": "Rooftop multi-cuisine restaurant at Hotel Chinmaye Inn — litti chokha, handi biryani, dosa and the Litchi Mirchi Jhatka signature drink.",
+          "telephone": "+918877222233"
+        },
+        {
+          "@type": "EventVenue",
+          "name": "Maya",
+          "description": "Banquet & convention hall at Hotel Chinmaye Inn for weddings, sangeet, receptions and corporate events — grand-scale seating."
+        }
+      ]
     },
-    "sameAs": ["https://www.instagram.com/chinmayeinn"],
-    "amenityFeature": [
-      {"@type":"LocationFeatureSpecification","name":"Free Wi-Fi"},
-      {"@type":"LocationFeatureSpecification","name":"Complimentary breakfast"},
-      {"@type":"LocationFeatureSpecification","name":"24-hour reception"},
-      {"@type":"LocationFeatureSpecification","name":"Parking"},
-      {"@type":"LocationFeatureSpecification","name":"Airport/station pickup & drop"}
-    ]
-  }
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Chinmaye Hotels",
+          "item": "https://kariwalbadal.github.io/chinmaye-group/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Hotel Chinmaye Inn",
+          "item": "https://kariwalbadal.github.io/chinmaye-inn/"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where is Hotel Chinmaye Inn located?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RBSR Path, Khanjarpur, Bhagalpur, Bihar 812001 — about five minutes from Bhagalpur Junction railway station, in the heart of the Silk City on the Ganga."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Hotel Chinmaye Inn have a restaurant?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — Kesaria, the rooftop multi-cuisine restaurant, serves North and South Indian food including litti chokha, handi biryani and masala dosa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can we host a wedding at Hotel Chinmaye Inn?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — Maya, the in-house banquet and convention hall, hosts weddings, sangeet, receptions and corporate events with grand-scale seating."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I book a room at Hotel Chinmaye Inn?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Book online through the secure booking page, message the hotel on WhatsApp at +91 88772 22233, or call the 24-hour reception on the same number."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>

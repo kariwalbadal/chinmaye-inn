@@ -1,0 +1,29 @@
+# Hotel Chinmaye Inn
+
+> Premium hotel in Bhagalpur (the Silk City), Bihar, India — rooms & suites, the Kesaria rooftop restaurant and the Maya banquet hall, about five minutes from Bhagalpur Junction railway station. Part of the Chinmaye Hotels family.
+
+## Key facts
+- Address: RBSR Path, Khanjarpur, Bhagalpur, Bihar 812001, India
+- Coordinates: 25.2562906, 86.9955132
+- Phone / WhatsApp: +91 88772 22233 (24-hour reception)
+- Email: info@chinmaye.in
+- Instagram: @chinmayeinn
+- Map: https://maps.app.goo.gl/Wm8hhCpK1s4CsVdu7
+
+## Rooms
+- Deluxe Suite — king bed, sitting lounge, bathtub; from ₹4,999/night (indicative)
+- Executive Room — king bed, sitting corner, work desk; from ₹3,999/night (indicative)
+- Business Class Room — double bed, work desk; from ₹2,999/night (indicative)
+- All rooms air-conditioned; complimentary breakfast and Wi-Fi; station pickup & drop available
+
+## Dining & events
+- Kesaria: rooftop multi-cuisine restaurant (North + South Indian) — litti chokha, handi biryani, masala dosa, "Litchi Mirchi Jhatka" signature drink
+- Maya: banquet & convention hall — weddings, sangeet, receptions, corporate events at grand scale
+
+## Booking
+- Online: secure booking handoff on https://kariwalbadal.github.io/chinmaye-inn/
+- WhatsApp/Call: +91 88772 22233
+
+## Family
+- Part of Chinmaye Hotels: https://kariwalbadal.github.io/chinmaye-group/
+- Sister properties: The Chinmaye Grand (Bhagalpur, opening soon) and Chinmaye Deoghar (opening 2027)
