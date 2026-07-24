@@ -11,12 +11,12 @@ window.CHINMAYE_CONFIG = {
   "inn": {
     "name": "Hotel Chinmaye Inn",
     "staahEnabled": true,
-    "staahUrl": "https://kariwalbadal.github.io/chinmaye-group/staah-demo/?property=inn&checkin={checkin}&checkout={checkout}&adults={adults}"
+    "staahUrl": "https://chinmaye.sutrabox.com/staah-demo/?property=inn&checkin={checkin}&checkout={checkout}&adults={adults}"
   },
   "grand": {
     "name": "The Chinmaye Grand",
     "staahEnabled": true,
-    "staahUrl": "https://kariwalbadal.github.io/chinmaye-group/staah-demo/?property=grand&checkin={checkin}&checkout={checkout}&adults={adults}"
+    "staahUrl": "https://chinmaye.sutrabox.com/staah-demo/?property=grand&checkin={checkin}&checkout={checkout}&adults={adults}"
   },
   "deoghar": {
     "name": "Chinmaye Deoghar",
