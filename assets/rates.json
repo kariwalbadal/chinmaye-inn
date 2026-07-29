@@ -1,9 +1,9 @@
 {
-  "updated": "2026-07-29T13:36:20.529Z",
+  "updated": "2026-07-29T15:17:43.208Z",
   "checkin": "2026-07-29",
   "roomName": "Business Class Room",
-  "direct": 2470,
-  "strikethrough": 3800,
+  "direct": 2665,
+  "strikethrough": 4100,
   "otas": [
     {
       "name": "Agoda",
@@ -26,7 +26,24 @@
       "rate": 3800
     }
   ],
-  "savingsPct": 35,
+  "savingsPct": 30,
   "available": true,
+  "rooms": {
+    "business": {
+      "rate": 2665,
+      "rack": 4100,
+      "left": 4,
+      "roomName": "Business Class Room"
+    },
+    "executive": {
+      "rate": 3315,
+      "rack": 5100,
+      "left": 3,
+      "roomName": "Executive Twin Bed Room"
+    },
+    "deluxe": {
+      "rate": null
+    }
+  },
   "source": "STAAH booking engine · WatchMyRate"
 }
