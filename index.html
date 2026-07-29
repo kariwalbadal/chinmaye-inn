@@ -32,7 +32,7 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/fraunces/v38/6NU78FyLNQOQZAnv9bYEvDiIdE9Ea92uemAk_WBq8U_9v0c2Wa0KxC9TeP2Xz5c.woff2">
   <link rel="preload" as="font" type="font/woff2" crossorigin href="https://fonts.gstatic.com/s/jost/v20/92zatBhPNqw73oTd4jQmfxI.woff2">
   <link rel="preload" as="image" fetchpriority="high"
-        imagesrcset="assets/img/hero-night-800.jpg 800w, assets/img/hero-night-1080.jpg 1080w, assets/img/hero-night-1600.jpg 1280w"
+        imagesrcset="assets/img/hero-maya-800.jpg 800w, assets/img/hero-maya-1080.jpg 1080w, assets/img/hero-maya-1600.jpg 1400w"
         imagesizes="100vw">
   <link rel="stylesheet" href="css/site.css">
 
@@ -271,12 +271,12 @@
     <!-- ======================= HERO ======================= -->
     <section class="hero" aria-label="Welcome">
       <div class="hero-slides" aria-hidden="true">
-        <img class="hero-slide s1" src="assets/img/hero-night-1080.jpg"
-             srcset="assets/img/hero-night-800.jpg 800w, assets/img/hero-night-1080.jpg 1080w, assets/img/hero-night-1600.jpg 1280w"
+        <img class="hero-slide s1" src="assets/img/hero-maya-1080.jpg"
+             srcset="assets/img/hero-maya-800.jpg 800w, assets/img/hero-maya-1080.jpg 1080w, assets/img/hero-maya-1600.jpg 1400w"
              sizes="100vw" alt="" fetchpriority="high" decoding="async">
         <!-- slides 2-3 load after window.load so they never compete with the LCP image -->
-        <img class="hero-slide s2" data-src="assets/img/kesaria-interior.jpg" alt="" decoding="async">
-        <img class="hero-slide s3" data-src="assets/img/maya-hall-gold.jpg" alt="" decoding="async">
+        <img class="hero-slide s2" data-src="assets/img/hero-night-1080.jpg" alt="" decoding="async">
+        <img class="hero-slide s3" data-src="assets/img/kesaria-interior.jpg" alt="" decoding="async">
       </div>
       <div class="hero-veil" aria-hidden="true"></div>
       <div class="hero-content">
@@ -412,14 +412,14 @@
 
         <div class="rate-strip" id="rate-strip" hidden>
           <div class="rate-strip-main">
-            <p class="rate-strip-label">Aaj ka direct rate</p>
+            <p class="rate-strip-label">Aaj ka direct rate · official website</p>
             <p class="rate-strip-price"><strong id="rs-direct"></strong> <s id="rs-strike"></s> <span class="rate-strip-save" id="rs-save"></span></p>
             <p class="rate-strip-otas" id="rs-otas"></p>
           </div>
           <div class="rate-strip-cta">
             <button class="btn btn-gold btn-small js-book" type="button" data-purpose="stay">Book online</button>
-            <p class="rate-strip-note" id="rs-note"></p>
           </div>
+          <p class="rate-strip-note" id="rs-note"></p>
         </div>
 
         <div class="rooms">
@@ -428,7 +428,7 @@
               <img src="assets/img/room-deluxe.jpg" alt="Deluxe Suite at Chinmaye Inn — king bed dressed with towel swans" loading="lazy" decoding="async">
             </figure>
             <div class="room-body">
-              <div class="room-title"><h3>Deluxe Suite</h3><p class="room-rate">from <strong>₹4,999</strong><span>/night</span></p></div>
+              <div class="room-title"><h3>Deluxe Suite</h3><p class="room-rate" data-rate-key="deluxe">from <strong>₹4,999</strong><span>/night</span></p></div>
               <p class="room-desc">The big one. A sitting room, a king bed, and the good pillows.</p>
               <p class="room-amenities">King bed · Sitting lounge · Bathtub · Breakfast for two</p>
               <div class="room-thumbs" aria-hidden="true">
@@ -447,7 +447,7 @@
               <img src="assets/img/room-executive.jpg" alt="Executive Room at Chinmaye Inn — king bed with sitting corner" loading="lazy" decoding="async">
             </figure>
             <div class="room-body">
-              <div class="room-title"><h3>Executive Room</h3><p class="room-rate">from <strong>₹3,999</strong><span>/night</span></p></div>
+              <div class="room-title"><h3>Executive Room</h3><p class="room-rate" data-rate-key="executive">from <strong>₹3,999</strong><span>/night</span></p></div>
               <p class="room-desc">Calm and classic — made for long, easy stays.</p>
               <p class="room-amenities">King bed · Sitting corner · Work desk</p>
               <div class="room-thumbs" aria-hidden="true">
@@ -466,7 +466,7 @@
               <img src="assets/img/room-business.jpg" alt="Business Class Room at Chinmaye Inn — bed by the window with work ledge" loading="lazy" decoding="async">
             </figure>
             <div class="room-body">
-              <div class="room-title"><h3>Business Class</h3><p class="room-rate">from <strong>₹2,999</strong><span>/night</span></p></div>
+              <div class="room-title"><h3>Business Class</h3><p class="room-rate" data-rate-key="business">from <strong>₹2,999</strong><span>/night</span></p></div>
               <p class="room-desc">Sharp and simple — desk, fast Wi-Fi, blackout sleep.</p>
               <p class="room-amenities">Double bed · Work desk · Early check-out breakfast pack</p>
               <div class="room-thumbs" aria-hidden="true">
@@ -480,7 +480,7 @@
             </div>
           </article>
         </div>
-        <p class="rate-note" data-reveal>Tariffs are indicative — WhatsApp us for today’s best rate.</p>
+        <p class="rate-note" data-reveal id="rate-note">Book direct — best rate guaranteed. Group ya shaadi ki booking? <a href="https://wa.me/918877222233?text=Namaste%20Chinmaye%20Inn!%20Aaj%20ka%20best%20direct%20rate%20bata%20dijiye." rel="noopener">WhatsApp the desk</a> — turant jawab.</p>
 
         <div class="amenities" data-reveal>
           <h3>Everything, thought through</h3>

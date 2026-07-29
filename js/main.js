@@ -187,26 +187,57 @@ if (modal && form) {
   });
 }
 
-/* ---------- live direct-rate strip (inn) ---------- */
+/* ---------- live rates: strip + per-room prices (inn) ---------- */
 const rateStrip = document.getElementById("rate-strip");
 if (rateStrip) {
+  const inr = (n) => "₹" + n.toLocaleString("en-IN");
+  const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   fetch("assets/rates.json", { cache: "no-cache" })
     .then((r) => r.json())
     .then((d) => {
       const ageH = (Date.now() - new Date(d.updated).getTime()) / 36e5;
-      if (!d.direct || !d.available || ageH > 36) return;
-      const inr = (n) => "₹" + n.toLocaleString("en-IN");
+      if (ageH > 36) return; // stale — leave the static page as-is
+
+      /* per-room card prices (cheapest live rate for each room type) */
+      document.querySelectorAll(".room-rate[data-rate-key]").forEach((p) => {
+        const r = (d.rooms || {})[p.dataset.rateKey];
+        if (!r) return;
+        if (r.rate) {
+          p.classList.add("live");
+          p.innerHTML =
+            "aaj " + (r.rack ? `<s>${inr(r.rack)}</s> ` : "") +
+            `<strong>${inr(r.rate)}</strong><span>/night</span>` +
+            (r.left > 0 && r.left <= 5 ? `<em class="room-left">sirf ${r.left} bache</em>` : "");
+        } else {
+          p.classList.add("live");
+          p.insertAdjacentHTML("beforeend", '<em class="room-left">aaj sold out</em>');
+        }
+      });
+
+      if (!d.direct || !d.available) return;
       document.getElementById("rs-direct").textContent = inr(d.direct);
       if (d.strikethrough && d.strikethrough > d.direct)
         document.getElementById("rs-strike").textContent = inr(d.strikethrough);
       if (d.savingsPct)
         document.getElementById("rs-save").textContent = "Save " + d.savingsPct + "% direct";
-      const otas = (d.otas || []).slice(0, 3).map((o) => `${o.name} ${inr(o.rate)}`).join(" · ");
-      document.getElementById("rs-otas").textContent = otas ? "Elsewhere tonight: " + otas : "";
+      const otaList = (d.otas || []).filter((o) => o.rate > 0);
+      const cheapestEverywhere = otaList.length && otaList.every((o) => o.rate > d.direct);
+      const otaHtml = otaList.slice(0, 3).map((o) => `${esc(o.name)} <s>${inr(o.rate)}</s>`).join(" · ");
+      document.getElementById("rs-otas").innerHTML = otaHtml
+        ? "Elsewhere tonight: " + otaHtml + (cheapestEverywhere ? " — <strong>yahin sabse sasta</strong>" : "")
+        : "";
       const t = new Date(d.updated);
       document.getElementById("rs-note").textContent =
         `Tonight · ${d.roomName} · checked ${t.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} IST via our booking engine`;
       rateStrip.hidden = false;
+
+      /* the tariff footnote can speak in the present tense now */
+      const note = document.getElementById("rate-note");
+      if (note)
+        note.innerHTML =
+          "Upar ke rates aaj raat ke live rates hain — seedha hamare booking engine se" +
+          (cheapestEverywhere ? ", har OTA se kam" : "") +
+          '. Group ya shaadi ki booking? <a href="https://wa.me/918877222233?text=Namaste%20Chinmaye%20Inn!%20Aaj%20ka%20best%20direct%20rate%20bata%20dijiye." rel="noopener">WhatsApp the desk</a> — turant jawab.';
     })
     .catch(() => {});
 }
