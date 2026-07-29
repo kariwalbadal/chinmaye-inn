@@ -768,3 +768,13 @@ body.menu-open { overflow: hidden; }
 #family .chapter-head { margin-bottom: clamp(24px, 4vw, 40px); }
 .chapter.address + .chapter.contact,
 .chapter.address + .chapter.address { padding-top: clamp(8px, 2vw, 24px); }
+
+
+/* banquet hall roster */
+.halls { display: grid; gap: 14px; margin-bottom: clamp(28px, 5vw, 40px); }
+@media (min-width: 700px) { .halls { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .halls { grid-template-columns: repeat(5, 1fr); } }
+.hall { border: 1px solid rgba(176,141,87,.4); background: #fff; padding: clamp(18px, 2.5vw, 24px); text-align: left; }
+.hall h3 { margin: 0 0 6px; font-size: 1.3rem; color: var(--wine); }
+.hall-meta { margin: 0 0 10px; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.hall-desc { margin: 0; font-size: .88rem; line-height: 1.55; }
