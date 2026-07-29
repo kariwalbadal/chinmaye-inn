@@ -1,0 +1,26 @@
+name: Refresh live rates
+on:
+  schedule:
+    # ~09:00, 15:00, 21:00 IST
+    - cron: "30 3,9,15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Fetch tonight's rates
+        run: node scripts/fetch-rates.mjs
+      - name: Commit if changed
+        run: |
+          git config user.name "rates-bot"
+          git config user.email "actions@github.com"
+          git add assets/rates.json
+          git diff --cached --quiet && echo "no change" || git commit -m "rates: refresh $(date -u +%F_%H:%M)" && git push

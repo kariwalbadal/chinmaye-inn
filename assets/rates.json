@@ -1,0 +1,32 @@
+{
+  "updated": "2026-07-29T13:29:59.320Z",
+  "checkin": "2026-07-29",
+  "roomName": "Business Class Room",
+  "direct": 2470,
+  "strikethrough": 3800,
+  "otas": [
+    {
+      "name": "Agoda",
+      "rate": 3800
+    },
+    {
+      "name": "Booking.com",
+      "rate": 3800
+    },
+    {
+      "name": "Cleartrip",
+      "rate": 3800
+    },
+    {
+      "name": "Goibibo",
+      "rate": 3800
+    },
+    {
+      "name": "Travelguru",
+      "rate": 3800
+    }
+  ],
+  "savingsPct": 35,
+  "available": true,
+  "source": "STAAH booking engine · WatchMyRate"
+}

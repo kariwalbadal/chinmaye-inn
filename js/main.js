@@ -186,3 +186,27 @@ if (modal && form) {
     });
   });
 }
+
+/* ---------- live direct-rate strip (inn) ---------- */
+const rateStrip = document.getElementById("rate-strip");
+if (rateStrip) {
+  fetch("assets/rates.json", { cache: "no-cache" })
+    .then((r) => r.json())
+    .then((d) => {
+      const ageH = (Date.now() - new Date(d.updated).getTime()) / 36e5;
+      if (!d.direct || !d.available || ageH > 36) return;
+      const inr = (n) => "₹" + n.toLocaleString("en-IN");
+      document.getElementById("rs-direct").textContent = inr(d.direct);
+      if (d.strikethrough && d.strikethrough > d.direct)
+        document.getElementById("rs-strike").textContent = inr(d.strikethrough);
+      if (d.savingsPct)
+        document.getElementById("rs-save").textContent = "Save " + d.savingsPct + "% direct";
+      const otas = (d.otas || []).slice(0, 3).map((o) => `${o.name} ${inr(o.rate)}`).join(" · ");
+      document.getElementById("rs-otas").textContent = otas ? "Elsewhere tonight: " + otas : "";
+      const t = new Date(d.updated);
+      document.getElementById("rs-note").textContent =
+        `Tonight · ${d.roomName} · checked ${t.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} IST via our booking engine`;
+      rateStrip.hidden = false;
+    })
+    .catch(() => {});
+}

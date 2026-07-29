@@ -778,3 +778,22 @@ body.menu-open { overflow: hidden; }
 .hall h3 { margin: 0 0 6px; font-size: 1.3rem; color: var(--wine); }
 .hall-meta { margin: 0 0 10px; font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
 .hall-desc { margin: 0; font-size: .88rem; line-height: 1.55; }
+
+/* live direct-rate strip (fed by assets/rates.json) */
+.rate-strip {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 16px 24px; margin-bottom: clamp(28px, 4vw, 40px);
+  border: 1px solid var(--wine); background: #fff;
+  padding: clamp(18px, 3vw, 26px);
+}
+.rate-strip-label { margin: 0 0 4px; font-size: .68rem; letter-spacing: .28em; text-transform: uppercase; color: var(--wine); }
+.rate-strip-price { margin: 0 0 6px; font-family: var(--serif); font-size: clamp(1.6rem, 4.5vw, 2.1rem); font-weight: 540; color: var(--ink); }
+.rate-strip-price s { font-family: var(--sans); font-weight: 300; font-size: .55em; opacity: .55; margin-left: 6px; }
+.rate-strip-save {
+  display: inline-block; margin-left: 10px; vertical-align: middle;
+  font-family: var(--sans); font-size: .66rem; letter-spacing: .18em; text-transform: uppercase;
+  background: var(--wine); color: var(--ivory); padding: 6px 12px;
+}
+.rate-strip-otas { margin: 0; font-size: .82rem; opacity: .75; max-width: none; }
+.rate-strip-cta { display: flex; flex-direction: column; gap: 8px; align-items: flex-start; }
+.rate-strip-note { margin: 0; font-size: .68rem; letter-spacing: .06em; opacity: .5; max-width: none; }
