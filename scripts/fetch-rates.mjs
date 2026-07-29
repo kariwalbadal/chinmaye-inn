@@ -35,7 +35,21 @@ const wmrBody = new URLSearchParams({
   wmrFTERateId: "",
 });
 
-const res = await fetch("https://watchmyrate.com/wmrwidgetcall_common.php", {
+async function fetchRetry(url, init, tries = 3) {
+  for (let i = 1; i <= tries; i++) {
+    try {
+      const r = await fetch(url, { ...init, signal: AbortSignal.timeout(20000) });
+      if (r.ok) return r;
+      throw new Error("HTTP " + r.status);
+    } catch (e) {
+      console.error(`attempt ${i}/${tries} failed for ${new URL(url).host}: ${e.message}`);
+      if (i === tries) throw e;
+      await new Promise((r) => setTimeout(r, 5000 * i));
+    }
+  }
+}
+
+const res = await fetchRetry("https://watchmyrate.com/wmrwidgetcall_common.php", {
   method: "POST",
   headers: {
     "Content-Type": "application/x-www-form-urlencoded",
@@ -44,7 +58,6 @@ const res = await fetch("https://watchmyrate.com/wmrwidgetcall_common.php", {
   },
   body: wmrBody.toString(),
 });
-if (!res.ok) throw new Error("WMR HTTP " + res.status);
 const wmr = JSON.parse((await res.text()).trim());
 if (wmr.status !== 1 || !Array.isArray(wmr.data) || !wmr.data.length)
   throw new Error("WMR payload unexpected: " + JSON.stringify(wmr).slice(0, 200));

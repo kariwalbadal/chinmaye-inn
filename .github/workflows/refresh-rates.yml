@@ -16,6 +16,10 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
+      - name: Network probe
+        run: |
+          curl -s -o /dev/null -w "csbe.staah.net %{http_code} in %{time_total}s\n" --max-time 15 -X POST "https://csbe.staah.net/?RequestType=bedataguest&JDRN=Y" || true
+          curl -s -o /dev/null -w "watchmyrate.com %{http_code} in %{time_total}s\n" --max-time 15 "https://watchmyrate.com" || true
       - name: Fetch tonight's rates
         run: node scripts/fetch-rates.mjs
       - name: Commit if changed
