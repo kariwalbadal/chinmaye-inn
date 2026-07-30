@@ -221,7 +221,8 @@ body.menu-open .menu-toggle span:last-child { transform: translateY(-4.25px) rot
   position: fixed; inset: 0; z-index: 90;
   background: var(--ink);
   color: var(--ivory);
-  display: flex; flex-direction: column; justify-content: center; gap: 8vh;
+  display: flex; flex-direction: column; justify-content: center; justify-content: safe center;
+  gap: clamp(24px, 6vh, 64px); overflow-y: auto;
   padding: calc(var(--header-h) + 4vh) var(--pad) 6vh;
   opacity: 0; visibility: hidden;
   transition: opacity .45s var(--ease), visibility .45s;
@@ -233,10 +234,6 @@ body.menu-open { overflow: hidden; }
 .menu-overlay nav a {
   font-family: var(--serif); font-weight: 420; font-size: clamp(2rem, 8vw, 3.4rem);
   line-height: 1.35; text-decoration: none; display: flex; align-items: baseline; gap: 18px;
-}
-.menu-overlay nav a small {
-  font-family: var(--sans); font-weight: 300; font-size: .7rem;
-  letter-spacing: .3em; color: var(--gold); min-width: 52px;
 }
 .menu-overlay nav a:hover { color: var(--gold-bright); }
 
@@ -670,13 +667,14 @@ body.menu-open { overflow: hidden; }
    ============================================================ */
 
 /* menu overlay property switcher */
-.menu-properties { display: flex; flex-direction: column; gap: 2px; margin-bottom: -4vh; }
-.menu-properties a {
+.menu-properties { display: flex; flex-direction: column; gap: 2px; }
+/* .menu-overlay prefix outranks the big serif `.menu-overlay nav a` rule */
+.menu-overlay nav.menu-properties a, .menu-properties a {
   font-family: var(--sans); font-weight: 400; font-size: .78rem;
   letter-spacing: .26em; text-transform: uppercase; text-decoration: none;
-  color: var(--gold-bright); padding: 6px 0;
+  line-height: 1.6; color: var(--gold-bright); padding: 6px 0;
 }
-.menu-properties a:hover { color: var(--ivory); }
+.menu-overlay nav.menu-properties a:hover, .menu-properties a:hover { color: var(--ivory); }
 
 /* property cards on brand home */
 .properties { display: grid; gap: clamp(24px, 4vw, 36px); }
