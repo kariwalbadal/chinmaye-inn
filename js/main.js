@@ -5,6 +5,8 @@
 
 const PROPERTY = window.PROPERTY || "inn";
 const CONFIG = (window.CHINMAYE_CONFIG || {})[PROPERTY] || {};
+/* A/B: pages under /en/ set window.SITE_EN and get English strings */
+const EN = Boolean(window.SITE_EN);
 
 const BOOKING = {
   phone: "+918877222233",
@@ -20,7 +22,7 @@ const BOOKING = {
     const when = date ? ` for ${date}` : "";
     const who = guests ? `, ${guests} guest${guests > 1 ? "s" : ""}` : "";
     const sign = name ? ` — ${name}` : "";
-    return `Namaste ${CONFIG.name || "Chinmaye"}! I'd like to ${what}${when}${who}.${sign}`;
+    return `${EN ? "Hello" : "Namaste"} ${CONFIG.name || "Chinmaye"}! I'd like to ${what}${when}${who}.${sign}`;
   },
   staahActive(purpose) {
     return purpose === "stay" && CONFIG.staahEnabled && CONFIG.staahUrl;
@@ -192,7 +194,7 @@ const rateStrip = document.getElementById("rate-strip");
 if (rateStrip) {
   const inr = (n) => "₹" + n.toLocaleString("en-IN");
   const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-  fetch("assets/rates.json", { cache: "no-cache" })
+  fetch("/assets/rates.json", { cache: "no-cache" })
     .then((r) => r.json())
     .then((d) => {
       const ageH = (Date.now() - new Date(d.updated).getTime()) / 36e5;
@@ -214,21 +216,21 @@ if (rateStrip) {
         p.classList.add("live");
         if (r.rate) {
           p.innerHTML =
-            "aaj " + (r.rack ? `<s>${inr(r.rack)}</s> ` : "") +
+            (EN ? "tonight " : "aaj ") + (r.rack ? `<s>${inr(r.rack)}</s> ` : "") +
             `<strong>${inr(r.rate)}</strong><span>/night</span>` +
-            (r.left > 0 && r.left <= 5 ? `<em class="room-left">sirf ${r.left} bache</em>` : "");
+            (r.left > 0 && r.left <= 5 ? `<em class="room-left">${EN ? "only " + r.left + " left" : "sirf " + r.left + " bache"}</em>` : "");
         } else {
           /* sold out tonight — still hand off to the engine, where other dates are open */
           p.insertAdjacentHTML(
             "beforeend",
-            '<em class="room-left">aaj sold out' +
-              (engineUrl ? ` · <a href="${engineUrl}" target="_blank" rel="noopener">aur dates dekhein</a>` : "") +
+            `<em class="room-left">${EN ? "sold out tonight" : "aaj sold out"}` +
+              (engineUrl ? ` · <a href="${engineUrl}" target="_blank" rel="noopener">${EN ? "see other dates" : "aur dates dekhein"}</a>` : "") +
               "</em>"
           );
         }
         /* the OTA comparison speaks for one room type — show it on that card */
         if (p.dataset.rateKey === d.otaRoomKey && otaHtml)
-          p.insertAdjacentHTML("afterend", `<span class="room-otas">OTAs pe yehi room aaj: ${otaHtml}</span>`);
+          p.insertAdjacentHTML("afterend", `<span class="room-otas">${EN ? "This room on OTAs tonight:" : "OTAs pe yehi room aaj:"} ${otaHtml}</span>`);
       });
 
       if (!d.direct || !d.available) return;
@@ -239,7 +241,7 @@ if (rateStrip) {
         document.getElementById("rs-save").textContent = "Save " + d.savingsPct + "% direct";
       const cheapestEverywhere = otaList.length && otaList.every((o) => o.rate > d.direct);
       document.getElementById("rs-otas").innerHTML = otaHtml
-        ? "Elsewhere tonight: " + otaHtml + (cheapestEverywhere ? " — <strong>yahin sabse sasta</strong>" : "")
+        ? "Elsewhere tonight: " + otaHtml + (cheapestEverywhere ? ` — <strong>${EN ? "cheapest right here" : "yahin sabse sasta"}</strong>` : "")
         : "";
       const t = new Date(d.updated);
       document.getElementById("rs-note").textContent =
@@ -249,10 +251,13 @@ if (rateStrip) {
       /* the tariff footnote can speak in the present tense now */
       const note = document.getElementById("rate-note");
       if (note)
-        note.innerHTML =
-          "Upar ke rates aaj raat ke live rates hain — seedha hamare booking engine se" +
-          (cheapestEverywhere ? ", har OTA se kam" : "") +
-          '. Group ya shaadi ki booking? <a href="https://wa.me/918877222233?text=Namaste%20Chinmaye%20Inn!%20Aaj%20ka%20best%20direct%20rate%20bata%20dijiye." rel="noopener">WhatsApp the desk</a> — turant jawab.';
+        note.innerHTML = EN
+          ? "The rates above are tonight’s live rates, straight from our booking engine" +
+            (cheapestEverywhere ? " — lower than every OTA" : "") +
+            '. Group or wedding booking? <a href="https://wa.me/918877222233?text=Hello%20Chinmaye%20Inn!%20Could%20you%20share%20today%27s%20best%20direct%20rate%3F" rel="noopener">WhatsApp the desk</a> — quick replies.'
+          : "Upar ke rates aaj raat ke live rates hain — seedha hamare booking engine se" +
+            (cheapestEverywhere ? ", har OTA se kam" : "") +
+            '. Group ya shaadi ki booking? <a href="https://wa.me/918877222233?text=Namaste%20Chinmaye%20Inn!%20Aaj%20ka%20best%20direct%20rate%20bata%20dijiye." rel="noopener">WhatsApp the desk</a> — turant jawab.';
     })
     .catch(() => {});
 }
