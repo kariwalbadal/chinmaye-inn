@@ -138,6 +138,13 @@ if (sellable.length) {
   throw new Error("Both rate sources failed — keeping previous rates.json");
 }
 
+// which site card the OTA comparison speaks for (WMR compares one room type)
+let otaRoomKey = null;
+const wmrRoomName = (wmrDirect?.roomName || "").replace(/\+/g, " ").trim().toLowerCase();
+if (wmrRoomName)
+  for (const [key, map] of Object.entries(ROOM_MAP))
+    if (Object.values(map.names).some((n) => n.toLowerCase() === wmrRoomName)) otaRoomKey = key;
+
 const bestOta = otas.length ? Math.min(...otas.map((o) => o.rate)) : null;
 const out = {
   updated: new Date().toISOString(),
@@ -148,6 +155,7 @@ const out = {
   otas,
   savingsPct: bestOta && direct ? Math.round((1 - direct / bestOta) * 100) : null,
   available: Boolean(direct),
+  otaRoomKey,
   rooms,
   source: "STAAH booking engine · WatchMyRate",
 };

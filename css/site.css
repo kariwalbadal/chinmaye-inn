@@ -530,7 +530,10 @@ body.menu-open { overflow: hidden; }
 .room-body { padding: clamp(20px, 3vw, 28px); display: flex; flex-direction: column; gap: 12px; flex: 1; }
 .room-title { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .room-title h3 { margin: 0; font-size: 1.35rem; }
-.room-rate { margin: 0; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); opacity: .85; white-space: nowrap; }
+.room-rate { margin: 0; flex-basis: 100%; font-size: .78rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink); opacity: .85; }
+.room-rate s { font-weight: 300; opacity: .5; letter-spacing: 0; margin-right: 2px; }
+.room-otas { flex-basis: 100%; margin: 2px 0 0; font-size: .68rem; letter-spacing: .04em; opacity: .8; }
+.room-otas s { opacity: .65; }
 .room-rate strong { font-family: var(--serif); font-size: 1.25rem; font-weight: 540; color: var(--wine); letter-spacing: 0; }
 .room-rate span { opacity: .6; }
 .room-desc { margin: 0; font-size: .95rem; }
@@ -801,7 +804,6 @@ body.menu-open { overflow: hidden; }
 .rate-strip-note { flex-basis: 100%; margin: 0; padding-top: 10px; border-top: 1px solid rgba(142,26,79,.15); font-size: .68rem; letter-spacing: .06em; opacity: .5; max-width: none; }
 
 /* live per-room prices (fed by assets/rates.json) */
-.room-rate.live { white-space: normal; text-align: right; }
-.room-rate.live s { font-weight: 300; opacity: .5; letter-spacing: 0; margin-right: 4px; }
-.room-left { display: block; font-style: normal; font-size: .6rem; letter-spacing: .18em; color: var(--wine); opacity: .9; margin-top: 3px; }
+.room-left { font-style: normal; font-size: .6rem; letter-spacing: .18em; color: var(--wine); opacity: .9; margin-left: 8px; }
+.room-left a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
 .rate-note a { color: var(--wine); text-decoration: underline; text-underline-offset: 3px; }

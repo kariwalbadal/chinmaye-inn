@@ -198,20 +198,37 @@ if (rateStrip) {
       const ageH = (Date.now() - new Date(d.updated).getTime()) / 36e5;
       if (ageH > 36) return; // stale — leave the static page as-is
 
+      const otaList = (d.otas || []).filter((o) => o.rate > 0);
+      const otaHtml = otaList.slice(0, 3).map((o) => `${esc(o.name)} <s>${inr(o.rate)}</s>`).join(" · ");
+      const engineUrl = BOOKING.staahActive("stay")
+        ? CONFIG.staahUrl
+            .replaceAll("{checkin}", new Date().toISOString().slice(0, 10))
+            .replaceAll("{checkout}", "")
+            .replaceAll("{adults}", "2")
+        : null;
+
       /* per-room card prices (cheapest live rate for each room type) */
       document.querySelectorAll(".room-rate[data-rate-key]").forEach((p) => {
         const r = (d.rooms || {})[p.dataset.rateKey];
         if (!r) return;
+        p.classList.add("live");
         if (r.rate) {
-          p.classList.add("live");
           p.innerHTML =
             "aaj " + (r.rack ? `<s>${inr(r.rack)}</s> ` : "") +
             `<strong>${inr(r.rate)}</strong><span>/night</span>` +
             (r.left > 0 && r.left <= 5 ? `<em class="room-left">sirf ${r.left} bache</em>` : "");
         } else {
-          p.classList.add("live");
-          p.insertAdjacentHTML("beforeend", '<em class="room-left">aaj sold out</em>');
+          /* sold out tonight — still hand off to the engine, where other dates are open */
+          p.insertAdjacentHTML(
+            "beforeend",
+            '<em class="room-left">aaj sold out' +
+              (engineUrl ? ` · <a href="${engineUrl}" target="_blank" rel="noopener">aur dates dekhein</a>` : "") +
+              "</em>"
+          );
         }
+        /* the OTA comparison speaks for one room type — show it on that card */
+        if (p.dataset.rateKey === d.otaRoomKey && otaHtml)
+          p.insertAdjacentHTML("afterend", `<span class="room-otas">OTAs pe yehi room aaj: ${otaHtml}</span>`);
       });
 
       if (!d.direct || !d.available) return;
@@ -220,9 +237,7 @@ if (rateStrip) {
         document.getElementById("rs-strike").textContent = inr(d.strikethrough);
       if (d.savingsPct)
         document.getElementById("rs-save").textContent = "Save " + d.savingsPct + "% direct";
-      const otaList = (d.otas || []).filter((o) => o.rate > 0);
       const cheapestEverywhere = otaList.length && otaList.every((o) => o.rate > d.direct);
-      const otaHtml = otaList.slice(0, 3).map((o) => `${esc(o.name)} <s>${inr(o.rate)}</s>`).join(" · ");
       document.getElementById("rs-otas").innerHTML = otaHtml
         ? "Elsewhere tonight: " + otaHtml + (cheapestEverywhere ? " — <strong>yahin sabse sasta</strong>" : "")
         : "";
