@@ -256,6 +256,8 @@
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_template" value="table">
               <input type="hidden" name="_subject" value="Career application — chinmaye.in">
+              <!-- absolute URL required by the relay, but written at runtime so it
+                   follows the site to its final domain without an edit -->
               <input type="hidden" name="_next" value="https://chinmayeinn.sutrabox.com/careers/?sent=1">
               <div class="cta-row">
                 <button class="btn btn-gold" type="submit" id="cf-submit">Send my application</button>
@@ -342,6 +344,9 @@
       if (ENDPOINT) {
         /* a normal POST carries the CV file and returns to ?sent=1 on our own page */
         form.action = ENDPOINT;
+        /* point the relay back at whatever domain we are actually served from,
+           so moving from the test domain to chinmaye.in needs no change here */
+        form._next.value = location.origin + location.pathname + "?sent=1";
       } else {
         form.addEventListener("submit", (e) => {
           e.preventDefault();
