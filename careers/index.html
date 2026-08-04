@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Careers at Chinmaye Hotels — Join the Parivaar · Bhagalpur</title>
+  <title>Careers at Chinmaye Hotels — Join the Family · Bhagalpur</title>
   <meta name="description" content="Work with Chinmaye Hotels, Bhagalpur — front office, Kesaria kitchen, housekeeping, banquets and management. One hotel today, three properties by 2027. WhatsApp your CV: +91 88772 22233.">
   <link rel="canonical" href="https://chinmayeinn.sutrabox.com/careers/">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Hotel Chinmaye Inn">
-  <meta property="og:title" content="Careers at Chinmaye Hotels — Join the Parivaar">
-  <meta property="og:description" content="Mehmaan bhagwan hote hain — aur jo unki seva karte hain, woh parivaar. Badhti chain, badhte mauke.">
+  <meta property="og:title" content="Careers at Chinmaye Hotels — Join the Family">
+  <meta property="og:description" content="Atithi Devo Bhava — and those who serve the guest are family. A growing chain, growing opportunities.">
   <meta property="og:url" content="https://chinmayeinn.sutrabox.com/careers/">
   <meta property="og:image" content="https://chinmayeinn.sutrabox.com/assets/img/rooftop-night.jpg">
   <meta name="twitter:card" content="summary_large_image">
@@ -38,6 +38,23 @@
     .apply-card input:focus, .apply-card select:focus, .apply-card textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
     .apply-card textarea { min-height: 90px; resize: vertical; }
     .apply-note { font-size: .72rem; opacity: .6; margin: 12px 0 0; }
+    .apply-card label .req { letter-spacing: .06em; text-transform: none; opacity: .55; font-size: .72rem; }
+    .apply-card input[type="file"] { padding: 10px 12px; font-size: .85rem; cursor: pointer; }
+    .apply-card input[type="file"]::file-selector-button {
+      font: inherit; font-size: .72rem; letter-spacing: .14em; text-transform: uppercase;
+      margin-right: 12px; padding: 7px 14px; cursor: pointer;
+      border: 1px solid var(--gold); background: transparent; color: var(--wine);
+    }
+    /* confirmation shown in place of the form — proof it left the building */
+    .apply-sent { text-align: center; padding: 8px 0 4px; }
+    .apply-sent-mark {
+      width: 54px; height: 54px; margin: 0 auto 16px; border-radius: 50%;
+      display: grid; place-items: center; font-size: 1.5rem; line-height: 1;
+      color: var(--wine); border: 1px solid var(--gold); background: rgba(176,141,87,.12);
+    }
+    .apply-sent h3 { margin: 0 0 10px; color: var(--wine); font-size: 1.3rem; }
+    .apply-sent p { margin: 0 0 8px; font-size: .92rem; line-height: 1.6; }
+    .apply-error { margin: 12px 0 0; font-size: .82rem; color: var(--wine); font-weight: 600; }
     .walkin { margin-top: 26px; border: 1px solid rgba(176,141,87,.45); background: #fff; padding: clamp(18px, 2.5vw, 24px); }
     .walkin h3 { margin: 0 0 8px; color: var(--wine); font-size: 1.15rem; }
     .walkin p { margin: 0; font-size: .9rem; line-height: 1.6; }
@@ -53,15 +70,16 @@
       <span class="brand-name">Chinmaye <em>Inn</em></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
-      <a href="../#stay">Stay</a>
-      <a href="../#kesaria">Kesaria</a>
+      <a href="../#address">The Address</a>
+      <a href="../#kesaria">Restaurant</a>
       <a href="../#banquets">Banquets</a>
+      <a href="../#stay">Stay</a>
       <a href="../#contact">Contact</a>
       <a href="./" aria-current="page">Careers</a>
     </nav>
     <div class="header-actions">
-      <a class="header-call" href="tel:+918877222233">+91 88772 22233</a>
-      <a class="btn btn-gold btn-small" href="https://wa.me/918877222233?text=Namaste%20Chinmaye!%20Career%20enquiry%20—%20apna%20CV%20isi%20chat%20mein%20bhejna%20chahte%20hain." rel="noopener">WhatsApp CV</a>
+      <span class="header-call" aria-label="Reception, +91 88772 22233">+91 88772 22233</span>
+      <a class="btn btn-gold btn-small" href="https://wa.me/918877222233?text=Hello%20Chinmaye!%20Career%20enquiry%20—%20I%27d%20like%20to%20share%20my%20CV%20in%20this%20chat." rel="noopener">WhatsApp CV</a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-overlay" aria-label="Open menu">
         <span></span><span></span>
       </button>
@@ -70,9 +88,10 @@
 
   <div class="menu-overlay" id="menu-overlay" hidden>
     <nav aria-label="Menu">
-      <a href="../#stay">Stay</a>
-      <a href="../#kesaria">Kesaria</a>
+      <a href="../#address">The Address</a>
+      <a href="../#kesaria">Our Restaurant · Kesaria</a>
       <a href="../#banquets">Banquets</a>
+      <a href="../#stay">Stay</a>
       <a href="../#contact">Contact</a>
       <a href="./" aria-current="page">Careers</a>
     </nav>
@@ -97,12 +116,12 @@
       <div class="hero-veil" aria-hidden="true"></div>
       <div class="hero-content">
         <p class="eyebrow reveal-up">Chinmaye Hotels · Careers</p>
-        <p class="hero-kicker reveal-up">“Mehmaan bhagwan hote hain. Aur jo unki seva karte hain — woh parivaar.”</p>
+        <p class="hero-kicker reveal-up">“Atithi Devo Bhava” — and those who serve the guest are family.</p>
         <h1 class="reveal-up">The Silk City’s<br>finest workplace.</h1>
-        <p class="hero-sub reveal-up">Ek hotel se shuru hui kahani ab teen thikano tak — Bhagalpur mein do, Deoghar mein teesra. Badhti chain, badhte mauke.</p>
+        <p class="hero-sub reveal-up">A story that began with one hotel now reaches for three — two in Bhagalpur, a third in Deoghar. A growing chain, growing opportunities.</p>
         <div class="hero-cta reveal-up">
-          <a class="btn btn-gold" href="#apply">Join the parivaar</a>
-          <a class="btn btn-ghost" href="https://wa.me/918877222233?text=Namaste%20Chinmaye!%20Career%20enquiry%20—%20apna%20CV%20isi%20chat%20mein%20bhejna%20chahte%20hain." rel="noopener">WhatsApp your CV</a>
+          <a class="btn btn-gold" href="#apply">Join the family</a>
+          <a class="btn btn-ghost" href="https://wa.me/918877222233?text=Hello%20Chinmaye!%20Career%20enquiry%20—%20I%27d%20like%20to%20share%20my%20CV%20in%20this%20chat." rel="noopener">WhatsApp your CV</a>
         </div>
       </div>
       <div class="hero-foot" aria-hidden="true">
@@ -111,21 +130,21 @@
       </div>
     </section>
 
-    <!-- ======================= Nº 01 · THE PARIVAAR ======================= -->
-    <section class="chapter" id="parivaar">
+    <!-- ======================= Nº 01 · THE FAMILY ======================= -->
+    <section class="chapter" id="family">
       <div class="wrap split">
         <figure class="split-media" data-reveal>
           <span class="media-frame"><img src="../assets/img/reception.jpg" alt="The front desk at Hotel Chinmaye Inn" loading="lazy" decoding="async"></span>
-          <figcaption>The front desk — jahan parivaar shuru hota hai</figcaption>
+          <figcaption>The front desk — where the family begins</figcaption>
         </figure>
         <div class="split-copy">
-          <p class="chapter-no" data-reveal>Nº 01 — The Parivaar</p>
-          <h2 data-reveal>Kaam nahi,<br><em>parivaar.</em></h2>
-          <p data-reveal>2015 se Chinmaye Inn Bhagalpur ki mehmaan-nawazi ka doosra naam hai. Aur yeh kaam kisi machine se nahi hota — logon se hota hai. Front desk ki muskurahat se, Kesaria ke tadke se, Maya ke sajaye hue stage se.</p>
-          <p data-reveal>Isliye hum pehle apne logon ka khayal rakhte hain — seekhne ka mahaul, izzat ka rishta, aur tarakki ka saaf raasta. The Chinmaye Grand taiyaar ho raha hai, Deoghar 2027 mein aa raha hai. Jo aaj join karta hai, woh kal leader banta hai.</p>
+          <p class="chapter-no" data-reveal>Nº 01 — The Family</p>
+          <h2 data-reveal>Not a job.<br><em>A family.</em></h2>
+          <p data-reveal>Since 2015, Chinmaye Inn has been another name for hospitality in Bhagalpur. And this work is not done by machines — it is done by people. By the smile at the front desk, the sizzle in Kesaria’s kitchen, the stage dressed and glowing at Maya.</p>
+          <p data-reveal>So we look after our people first — a place to learn, a culture of respect, and a clear road upward. The Chinmaye Grand is nearly ready, and Deoghar arrives in 2027. Those who join today lead tomorrow.</p>
           <div class="rule" data-reveal><span class="rule-diamond" aria-hidden="true"></span></div>
           <dl class="stats" data-reveal>
-            <div><dt>2015</dt><dd>se Bhagalpur ke saath</dd></div>
+            <div><dt>2015</dt><dd>serving Bhagalpur since</dd></div>
             <div><dt>60</dt><dd>rooms &amp; suites</dd></div>
             <div><dt>5</dt><dd>banquet halls</dd></div>
             <div><dt>3</dt><dd>properties by 2027</dd></div>
@@ -139,29 +158,29 @@
       <div class="wrap">
         <header class="chapter-head">
           <p class="chapter-no" data-reveal>Nº 02 — The Teams</p>
-          <h2 data-reveal>Har hunar ki<br><em>yahan jagah hai.</em></h2>
-          <p class="chapter-lede" data-reveal>Hotel ek stage hai — aur har team uska ek kirdaar. Openings waqt-waqt par har team mein aati hain. Aap bataiye aapka hunar kya hai; jagah hum dhundh lenge.</p>
+          <h2 data-reveal>Every talent has<br><em>a place here.</em></h2>
+          <p class="chapter-lede" data-reveal>A hotel is a stage — and every team plays a part. Openings come up across teams through the year. Tell us what you do best; we will find the place.</p>
         </header>
         <div class="halls">
           <article class="hall" data-reveal>
-            <h3>Front Office</h3><p class="hall-meta">Pehli muskurahat</p>
-            <p class="hall-desc">Reception, concierge, guest care — mehmaan ke liye sheher ka chehra aap hain.</p>
+            <h3>Front Office</h3><p class="hall-meta">The first smile</p>
+            <p class="hall-desc">Reception, concierge, guest care — to every guest, you are the face of the city.</p>
           </article>
           <article class="hall" data-reveal>
-            <h3>Kesaria — Kitchen &amp; Service</h3><p class="hall-meta">Swad ka mahakma</p>
-            <p class="hall-desc">Chefs, stewards, captains — rooftop pe roz ek nayi mehfil sajti hai.</p>
+            <h3>Kesaria — Kitchen &amp; Service</h3><p class="hall-meta">The ministry of taste</p>
+            <p class="hall-desc">Chefs, stewards, captains — a new evening comes alive on the rooftop every day.</p>
           </article>
           <article class="hall" data-reveal>
-            <h3>Housekeeping</h3><p class="hall-meta">Sukoon ke kaarigar</p>
-            <p class="hall-desc">Towel ke swan se crisp chaadar tak — kamra khud aapke kaam ki taareef karta hai.</p>
+            <h3>Housekeeping</h3><p class="hall-meta">The craft of calm</p>
+            <p class="hall-desc">From towel swans to crisp sheets — the room itself speaks for your work.</p>
           </article>
           <article class="hall" data-reveal>
-            <h3>Banquets &amp; Events</h3><p class="hall-meta">Season ke hero</p>
-            <p class="hall-desc">Paanch halls, hazaar kahaniyan — setup se vidaai tak sab aapke haath.</p>
+            <h3>Banquets &amp; Events</h3><p class="hall-meta">Heroes of the season</p>
+            <p class="hall-desc">Five halls, a thousand stories — from set-up to send-off, all in your hands.</p>
           </article>
           <article class="hall" data-reveal>
-            <h3>Sales &amp; Management</h3><p class="hall-meta">Peeche ka engine</p>
-            <p class="hall-desc">Rates, khaata, planning — hotel ko chalane wala dimaag.</p>
+            <h3>Sales &amp; Management</h3><p class="hall-meta">The engine room</p>
+            <p class="hall-desc">Rates, accounts, planning — the mind that keeps the hotel running.</p>
           </article>
         </div>
       </div>
@@ -172,7 +191,7 @@
       <div class="wrap">
         <header class="chapter-head">
           <p class="chapter-no" data-reveal>Nº 03 — Life at Chinmaye</p>
-          <h2 data-reveal>Roz kuchh<br><em>naya seekhiye.</em></h2>
+          <h2 data-reveal>Learn something<br><em>new every day.</em></h2>
         </header>
         <div class="food-grid">
           <figure data-reveal><img src="../assets/img/careers-kitchen.jpg" alt="A chef at work over a flaming pan in a professional kitchen" loading="lazy" decoding="async"></figure>
@@ -182,16 +201,16 @@
         </div>
         <div class="halls">
           <article class="hall" data-reveal>
-            <h3>Seekhna, roz</h3><p class="hall-meta">On the job</p>
-            <p class="hall-desc">Naye log seniors ke saath seekhte hain — workshop nahi, asli mehmaan, asli tajurba.</p>
+            <h3>Learn, daily</h3><p class="hall-meta">On the job</p>
+            <p class="hall-desc">Newcomers learn beside seniors — no classroom, real guests, real experience.</p>
           </article>
           <article class="hall" data-reveal>
-            <h3>Izzat, sabse pehle</h3><p class="hall-meta">Family-run</p>
-            <p class="hall-desc">Yahan log naam se bulaye jaate hain, designation se nahi. Mehmaan bhagwan — aur team parivaar.</p>
+            <h3>Respect, first</h3><p class="hall-meta">Family-run</p>
+            <p class="hall-desc">People here are called by name, not designation. The guest is god — and the team is family.</p>
           </article>
           <article class="hall" data-reveal>
-            <h3>Tarakki, teen thikane</h3><p class="hall-meta">Growing chain</p>
-            <p class="hall-desc">Grand khul raha hai, Deoghar ban raha hai — aaj ka staff kal ka leader.</p>
+            <h3>Growth, three addresses</h3><p class="hall-meta">Growing chain</p>
+            <p class="hall-desc">The Grand is opening, Deoghar is rising — today’s staff, tomorrow’s leaders.</p>
           </article>
         </div>
       </div>
@@ -201,44 +220,62 @@
     <section class="chapter" id="apply">
       <div class="wrap">
         <header class="chapter-head">
-          <p class="chapter-no" data-reveal>Nº 04 — Aaiye, milte hain</p>
-          <h2 data-reveal>CV bhejiye,<br><em>chai pe milte hain.</em></h2>
-          <p class="chapter-lede" data-reveal>Formalities kam, baat zyada. Naam bataiye, team chuniye — WhatsApp ya email, jo aasan lage. Front desk replies fast.</p>
+          <p class="chapter-no" data-reveal>Nº 04 — Come, meet us</p>
+          <h2 data-reveal>Send your CV,<br><em>let’s talk over tea.</em></h2>
+          <p class="chapter-lede" data-reveal>Less formality, more conversation. Fill this in, attach your CV, and it lands with the front desk straight away — no email app, no attachments to chase.</p>
         </header>
         <div class="apply-grid">
           <div class="apply-card" data-reveal>
-            <form id="career-form">
-              <label for="cf-name">Aapka naam</label>
-              <input id="cf-name" name="name" type="text" autocomplete="name" required placeholder="Naam">
-              <label for="cf-team">Kaunsi team?</label>
+            <!-- Sent from the site itself; the applicant never leaves for a mail app. -->
+            <div class="apply-sent" id="apply-sent" hidden role="status">
+              <p class="apply-sent-mark" aria-hidden="true">✓</p>
+              <h3>Sent — we have it.</h3>
+              <p>Your application is with the front desk at <strong>info@chinmaye.in</strong>. Someone reads every one; expect a reply within a couple of days.</p>
+              <p class="apply-note">In a hurry? <a href="https://wa.me/918877222233?text=Hello%20Chinmaye!%20I%20just%20sent%20my%20application%20through%20the%20website." rel="noopener">Say hello on WhatsApp</a> and we'll pull it up.</p>
+            </div>
+            <form id="career-form" method="POST" enctype="multipart/form-data" novalidate>
+              <label for="cf-name">Your name</label>
+              <input id="cf-name" name="name" type="text" autocomplete="name" required placeholder="Name">
+              <label for="cf-contact">Phone or email <span class="req">— so we can reply</span></label>
+              <input id="cf-contact" name="contact" type="text" autocomplete="tel" required placeholder="88772 22233 or you@email.com">
+              <label for="cf-team">Which team?</label>
               <select id="cf-team" name="team">
                 <option>Front Office</option>
                 <option>Kesaria — Kitchen &amp; Service</option>
                 <option>Housekeeping</option>
                 <option>Banquets &amp; Events</option>
                 <option>Sales &amp; Management</option>
-                <option selected>Koi bhi team — jahan jagah ho</option>
+                <option selected>Any team — wherever there’s a place</option>
               </select>
-              <label for="cf-msg">Kuchh apne baare mein (optional)</label>
-              <textarea id="cf-msg" name="msg" placeholder="Tajurba, sheher, kab se join kar sakte hain…"></textarea>
+              <label for="cf-cv">Your CV <span class="req">— PDF or Word, optional</span></label>
+              <input id="cf-cv" name="attachment" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+              <label for="cf-msg">A little about you (optional)</label>
+              <textarea id="cf-msg" name="msg" placeholder="Experience, city, when you can join…"></textarea>
+              <!-- spam trap: real people never fill this -->
+              <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_template" value="table">
+              <input type="hidden" name="_subject" value="Career application — chinmaye.in">
+              <input type="hidden" name="_next" value="https://chinmayeinn.sutrabox.com/careers/?sent=1">
               <div class="cta-row">
-                <button class="btn btn-gold" type="submit" data-via="whatsapp">Send on WhatsApp</button>
-                <button class="btn btn-ghost-dark" type="submit" data-via="email">Email your CV</button>
+                <button class="btn btn-gold" type="submit" id="cf-submit">Send my application</button>
+                <a class="btn btn-ghost-dark" href="https://wa.me/918877222233?text=Hello%20Chinmaye!%20Career%20enquiry%20—%20I%27d%20like%20to%20share%20my%20CV%20in%20this%20chat." rel="noopener">Send on WhatsApp instead</a>
               </div>
-              <p class="apply-note">WhatsApp pe CV agli message mein bhej dijiye · email mein attach kar dijiye. Aapki jaankari sirf hiring ke liye istemal hoti hai.</p>
+              <p class="apply-error" id="cf-error" hidden role="alert"></p>
+              <p class="apply-note">Sent straight to the hotel from this page. Your details are used for hiring only.</p>
             </form>
           </div>
           <div>
             <div class="walkin" data-reveal>
-              <h3>Purana tareeqa pasand hai?</h3>
-              <p>Seedha aa jaiye — front desk 24×7 khula hai. “HR se milna hai” boliye; chai hamari taraf se.</p>
+              <h3>Prefer the old way?</h3>
+              <p>Walk right in — the front desk is open 24×7. Say “I’d like to meet HR”; the tea is on us.</p>
               <p style="margin-top:10px;"><strong>Hotel Chinmaye Inn</strong><br>RBSR Path, Khanjarpur, Bhagalpur, Bihar 812001</p>
             </div>
             <div class="walkin" data-reveal>
-              <h3>Seedha sampark</h3>
+              <h3>Reach us directly</h3>
               <p>
                 <a href="tel:+918877222233">+91 88772 22233</a> ·
-                <a href="https://wa.me/918877222233?text=Namaste%20Chinmaye!%20Career%20enquiry." rel="noopener">WhatsApp</a> ·
+                <a href="https://wa.me/918877222233?text=Hello%20Chinmaye!%20Career%20enquiry." rel="noopener">WhatsApp</a> ·
                 <a href="mailto:info@chinmaye.in?subject=Career%20at%20Chinmaye">info@chinmaye.in</a>
               </p>
             </div>
@@ -254,7 +291,7 @@
     <div class="wrap footer-inner">
       <img class="footer-logo" src="../assets/chinmaye-logo-ivory.webp" alt="Chinmaye Inn" width="200" height="132" loading="lazy" decoding="async">
       <nav class="footer-nav" aria-label="Footer">
-        <a href="../#stay">Stay</a><a href="../#kesaria">Kesaria</a><a href="../#banquets">Banquets</a><a href="../#contact">Contact</a><a href="./" aria-current="page">Careers</a>
+        <a href="../#address">The Address</a><a href="../#kesaria">Our Restaurant · Kesaria</a><a href="../#banquets">Banquets</a><a href="../#stay">Stay</a><a href="../#contact">Contact</a><a href="./" aria-current="page">Careers</a>
       </nav>
       <p class="footer-line">RBSR Path, Khanjarpur, Bhagalpur · +91 88772 22233 · info@chinmaye.in</p>
       <p class="footer-note">Website concept sample · photography courtesy Hotel Chinmaye Inn · some workplace imagery is representative stock photography</p>
@@ -264,7 +301,7 @@
   <!-- ======================= STICKY BAR (mobile) ======================= -->
   <div class="sticky-bar" role="region" aria-label="Quick contact">
     <a href="tel:+918877222233" aria-label="Call Hotel Chinmaye Inn">Call</a>
-    <a href="https://wa.me/918877222233?text=Namaste%20Chinmaye!%20Career%20enquiry%20—%20apna%20CV%20isi%20chat%20mein%20bhejna%20chahte%20hain." rel="noopener" aria-label="WhatsApp your CV">WhatsApp</a>
+    <a href="https://wa.me/918877222233?text=Hello%20Chinmaye!%20Career%20enquiry%20—%20I%27d%20like%20to%20share%20my%20CV%20in%20this%20chat." rel="noopener" aria-label="WhatsApp your CV">WhatsApp</a>
     <a href="mailto:info@chinmaye.in?subject=Career%20at%20Chinmaye" aria-label="Email your CV">Email CV</a>
   </div>
 
@@ -278,26 +315,54 @@
   ]
 }
   </script>
-
   <script src="../js/main.js" defer></script>
+  <script src="../js/careers-config.js"></script>
   <script>
-    /* career form → prefilled WhatsApp chat or email draft (no backend) */
-    document.getElementById("career-form").addEventListener("submit", (e) => {
-      e.preventDefault();
-      const form = e.target;
-      if (!form.reportValidity()) return;
-      const name = form.name.value.trim();
-      const team = form.team.value;
-      const msg = form.msg.value.trim();
-      const via = e.submitter && e.submitter.dataset.via;
-      const text = `Namaste Chinmaye! Mera naam ${name} hai — "${team}" ke liye apply karna hai.` + (msg ? `\n\n${msg}` : "") + "\n\nCV agli message mein bhej rahe hain.";
-      if (via === "email") {
-        location.href = "mailto:info@chinmaye.in?subject=" + encodeURIComponent(`Career at Chinmaye — ${team} — ${name}`) +
-          "&body=" + encodeURIComponent(text.replace("agli message mein bhej rahe hain", "attach kiya hai"));
-      } else {
-        window.open("https://wa.me/918877222233?text=" + encodeURIComponent(text), "_blank", "noopener");
+    /* The application is sent by the site itself — the applicant never opens a mail app.
+       Endpoint comes from careers-config.js (generated from .env). Until it is set,
+       we fall back to the old mail-draft behaviour so the page is never a dead end. */
+    (() => {
+      const form   = document.getElementById("career-form");
+      const sent   = document.getElementById("apply-sent");
+      const errBox = document.getElementById("cf-error");
+      const btn    = document.getElementById("cf-submit");
+      const ENDPOINT = (window.CAREERS_FORM || {}).endpoint || "";
+
+      /* returning from the relay with ?sent=1 — confirm it, in place */
+      const showSent = () => {
+        form.hidden = true;
+        sent.hidden = false;
+        sent.scrollIntoView({ block: "center", behavior: "smooth" });
+      };
+      if (new URLSearchParams(location.search).get("sent") === "1") {
+        showSent();
+        history.replaceState(null, "", location.pathname + location.hash);
       }
-    });
+
+      if (ENDPOINT) {
+        /* a normal POST carries the CV file and returns to ?sent=1 on our own page */
+        form.action = ENDPOINT;
+      } else {
+        form.addEventListener("submit", (e) => {
+          e.preventDefault();
+          if (!form.reportValidity()) return;
+          const name = form.name.value.trim(), team = form.team.value, msg = form.msg.value.trim();
+          const contact = form.contact.value.trim();
+          const text = `Hello Chinmaye! My name is ${name} — I would like to apply for "${team}".` +
+            (contact ? `\nReach me on: ${contact}` : "") + (msg ? `\n\n${msg}` : "") +
+            "\n\nSending my CV in the next message.";
+          window.open("https://wa.me/918877222233?text=" + encodeURIComponent(text), "_blank", "noopener");
+        });
+        return;
+      }
+
+      form.addEventListener("submit", (e) => {
+        if (!form.reportValidity()) { e.preventDefault(); return; }
+        errBox.hidden = true;
+        btn.disabled = true;
+        btn.textContent = "Sending…";
+      });
+    })();
   </script>
 </body>
 </html>

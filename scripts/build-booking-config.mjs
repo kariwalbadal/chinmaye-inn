@@ -38,3 +38,15 @@ writeFileSync(
   banner + "window.CHINMAYE_CONFIG = " + JSON.stringify(config, null, 2) + ";\n"
 );
 console.log("js/booking-config.js regenerated:", JSON.stringify(config));
+
+/* Careers form relay (FormSubmit). The token is a public endpoint id, not a secret —
+   it only lets a form post TO the hotel's inbox. Empty = page falls back to WhatsApp. */
+const careers = { endpoint: env.CAREERS_FORM_ENDPOINT || "" };
+writeFileSync(
+  join(root, "js/careers-config.js"),
+  `/* Chinmaye Hotels — careers form relay. GENERATED FILE.
+   Run \`node scripts/build-booking-config.mjs\` after editing .env. */
+window.CAREERS_FORM = ${JSON.stringify(careers, null, 2)};
+`
+);
+console.log("js/careers-config.js regenerated:", JSON.stringify(careers));

@@ -189,7 +189,7 @@ a { color: inherit; }
 .main-nav a {
   font-size: .78rem; letter-spacing: .22em; text-transform: uppercase;
   text-decoration: none; opacity: .85; transition: opacity .25s;
-  padding: 6px 0;
+  padding: 6px 0; white-space: nowrap;
 }
 .main-nav a:hover { opacity: 1; }
 
@@ -348,7 +348,8 @@ body.menu-open { overflow: hidden; }
 .hero-slide { object-fit: cover; opacity: 0; filter: saturate(.92) sepia(.08); }
 /* s1 starts visible so the full-bleed image is the LCP, not a late text repaint */
 .hero-slide.s1 { animation: heroCycleFirst 24s infinite; object-position: center 72%; }
-.hero-slide.s2 { animation: heroCycle 24s 8s infinite; }
+/* facade: hold the frame low so the CHINMAYE INN signage survives the cover-crop */
+.hero-slide.s2 { animation: heroCycle 24s 8s infinite; object-position: center 76%; }
 .hero-slide.s3 { animation: heroCycle 24s 16s infinite; }
 
 @keyframes heroCycle {
@@ -612,9 +613,8 @@ body.menu-open { overflow: hidden; }
 /* ---------- contact ---------- */
 .contact { background: var(--ivory); }
 .contact address { font-style: normal; margin-bottom: 1.6rem; line-height: 1.8; }
-.contact-links { list-style: none; margin: 0; padding: 0; max-width: 420px; }
+.contact-links { list-style: none; margin: 0; padding: 0; max-width: 420px; border-top: 1px solid rgba(176, 141, 87, .35); }
 .contact-links li { border-bottom: 1px solid rgba(176, 141, 87, .35); }
-.contact-links li:first-child { border-top: 1px solid rgba(176, 141, 87, .35); }
 .contact-links a {
   display: flex; justify-content: space-between; align-items: baseline; gap: 14px;
   padding: 16px 2px; text-decoration: none;
@@ -805,3 +805,15 @@ body.menu-open { overflow: hidden; }
 .room-left { font-style: normal; font-size: .6rem; letter-spacing: .18em; color: var(--wine); opacity: .9; margin-left: 8px; }
 .room-left a { color: var(--wine); text-decoration: underline; text-underline-offset: 2px; }
 .rate-note a { color: var(--wine); text-decoration: underline; text-underline-offset: 3px; }
+
+/* ---------- viewport-appropriate contact affordances ----------
+   A tel: link is dead weight on a laptop; desktop gets the site's own
+   enquiry form instead, phones keep tap-to-call. */
+.on-desktop { display: none; }
+@media (min-width: 900px) {
+  .on-mobile { display: none; }
+  .on-desktop { display: inline-flex; }
+  li.on-desktop { display: list-item; }
+  p.on-desktop { display: block; }
+}
+.header-call { color: inherit; white-space: nowrap; }

@@ -11,7 +11,7 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Hotel Chinmaye Inn">
   <meta property="og:title" content="Hotel Chinmaye Inn — The Silk City's Finest Address">
-  <meta property="og:description" content="Rooms, rooftop dining at Kesaria & five banquet halls. Khanjarpur, Bhagalpur — on the Ganga. Mehmaan bhagwan hote hain.">
+  <meta property="og:description" content="Rooms, rooftop dining at Kesaria & five banquet halls. Khanjarpur, Bhagalpur — on the Ganga. Atithi Devo Bhava.">
   <meta property="og:url" content="https://chinmayeinn.sutrabox.com/">
   <meta property="og:image" content="https://chinmayeinn.sutrabox.com/assets/og.jpg">
   <meta property="og:image:width" content="1200">
@@ -230,15 +230,15 @@
       <span class="brand-name">Chinmaye <em>Inn</em></span>
     </a>
     <nav class="main-nav" aria-label="Primary">
-      <a href="#stay">Stay</a>
-      <a href="#kesaria">Kesaria</a>
-      <a href="#banquets">Banquets</a>
       <a href="#address">The Address</a>
+      <a href="#kesaria">Restaurant</a>
+      <a href="#banquets">Banquets</a>
+      <a href="#stay">Stay</a>
       <a href="#contact">Contact</a>
       <a href="https://chinmaye.sutrabox.com/">All Properties</a>
     </nav>
     <div class="header-actions">
-      <a class="header-call" href="tel:+918877222233">+91 88772 22233</a>
+      <span class="header-call" aria-label="Reception, +91 88772 22233">+91 88772 22233</span>
       <button class="btn btn-gold btn-small js-book" type="button" data-purpose="stay">Reserve</button>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="menu-overlay" aria-label="Open menu">
         <span></span><span></span>
@@ -249,10 +249,10 @@
   <!-- Full-screen menu -->
   <div class="menu-overlay" id="menu-overlay" hidden>
     <nav aria-label="Menu">
-      <a href="#stay">Stay</a>
-      <a href="#kesaria">Kesaria</a>
-      <a href="#banquets">Banquets</a>
       <a href="#address">The Address</a>
+      <a href="#kesaria">Our Restaurant · Kesaria</a>
+      <a href="#banquets">Banquets</a>
+      <a href="#stay">Stay</a>
       <a href="#contact">Contact</a>
     </nav>
     <nav class="menu-properties" aria-label="Other properties">
@@ -275,18 +275,21 @@
              srcset="assets/img/hero-maya-800.jpg 800w, assets/img/hero-maya-1080.jpg 1080w, assets/img/hero-maya-1600.jpg 1400w"
              sizes="100vw" alt="" fetchpriority="high" decoding="async">
         <!-- slides 2-3 load after window.load so they never compete with the LCP image -->
-        <img class="hero-slide s2" data-src="assets/img/hero-night-1080.jpg" alt="" decoding="async">
+        <img class="hero-slide s2" data-src="assets/img/hero-facade-1080.jpg"
+             data-srcset="assets/img/hero-facade-800.jpg 800w, assets/img/hero-facade-1080.jpg 1080w, assets/img/hero-facade-1400.jpg 1400w"
+             sizes="100vw" alt="" decoding="async">
         <img class="hero-slide s3" data-src="assets/img/kesaria-interior.jpg" alt="" decoding="async">
       </div>
       <div class="hero-veil" aria-hidden="true"></div>
       <div class="hero-content">
         <p class="eyebrow reveal-up">Bhagalpur · The Silk City · On the Ganga</p>
-        <p class="hero-kicker reveal-up">“Mehmaan bhagwan hote hain.”</p>
+        <p class="hero-kicker reveal-up">“Atithi Devo Bhava.”</p>
         <h1 class="reveal-up">The Silk City’s<br>finest address.</h1>
         <p class="hero-sub reveal-up">Rooms &amp; suites, rooftop dining at Kesaria, five banquet halls — minutes from Bhagalpur Junction.</p>
         <div class="hero-cta reveal-up">
           <button class="btn btn-gold js-book" type="button" data-purpose="stay">Book your stay</button>
-          <a class="btn btn-ghost" href="tel:+918877222233">Call the desk</a>
+          <a class="btn btn-ghost on-mobile" href="tel:+918877222233">Call the desk</a>
+          <button class="btn btn-ghost on-desktop js-book" type="button" data-purpose="stay">Send an enquiry</button>
         </div>
       </div>
       <div class="hero-foot" aria-hidden="true">
@@ -304,7 +307,7 @@
         </figure>
         <div class="split-copy">
           <p class="chapter-no" data-reveal>Nº 01 — The Address</p>
-          <h2 data-reveal>Bhagalpur ke<br><em>dil mein.</em></h2>
+          <h2 data-reveal>In the heart<br><em>of Bhagalpur.</em></h2>
           <p data-reveal>Silk gave this city its name. The Ganga gives it its mornings. Since 2015, Chinmaye Inn has stood in Khanjarpur — three kilometres from the railway station, a short ride from the ghats, and a world away from the noise.</p>
           <p data-reveal>Come for a night or a wedding week. Either way, you leave as family.</p>
           <div class="rule" data-reveal><span class="rule-diamond" aria-hidden="true"></span></div>
@@ -322,9 +325,9 @@
     <section class="chapter kesaria" id="kesaria">
       <div class="wrap">
         <header class="chapter-head">
-          <p class="chapter-no" data-reveal>Nº 02 — The Restaurant</p>
+          <p class="chapter-no" data-reveal>Nº 02 — Our Restaurant</p>
           <img class="venue-logo" src="assets/kesaria-logo-ivory.webp" alt="Kesaria" width="240" height="107" loading="lazy" decoding="async" data-reveal>
-          <h2 data-reveal>Bhookh ka<br><em>asli ilaaj.</em></h2>
+          <h2 data-reveal>The true cure<br><em>for hunger.</em></h2>
           <p class="chapter-lede" data-reveal>Bhagalpur’s finest rooftop table — Indian, Oriental and Continental under one sky, with the Ganga to the north and the greens of Sandis to the south.</p>
         </header>
 
@@ -344,7 +347,7 @@
               <li><span>Hyderabadi Biryani</span><small>from ₹389 · dum-sealed</small></li>
               <li><span>Litchi Mirchi Jhatka</span><small>₹199 · the signature sip — sweet, then it bites</small></li>
             </ul>
-            <p data-reveal>Shaam ko candle-light dinner, Sunday ki subah outdoor breakfast — aur full menu WhatsApp pe. Prices from the current menu card; taxes apply.</p>
+            <p data-reveal>Candle-light dinners in the evening, outdoor breakfast on Sunday mornings — and the full menu on WhatsApp. Prices from the current menu card; taxes apply.</p>
             <div class="cta-row" data-reveal>
               <button class="btn btn-gold js-book" type="button" data-purpose="dine">Reserve a table</button>
             </div>
@@ -357,13 +360,13 @@
       </div>
     </section>
 
-    <!-- ======================= Nº 03 · MAYA ======================= -->
+    <!-- ======================= Nº 03 · THE BANQUETS ======================= -->
     <section class="chapter maya" id="banquets">
       <div class="wrap">
         <header class="chapter-head">
           <p class="chapter-no" data-reveal>Nº 03 — The Banquets</p>
-          <h2 data-reveal>Haan boliye.<br><em>Baaki hum sambhal lenge.</em></h2>
-          <p class="chapter-lede" data-reveal>Paanch halls, ek team — an intimate kitty party for twenty or a five-hundred-guest baraat, there is a hall sized for it.</p>
+          <h2 data-reveal>Say yes.<br><em>We’ll handle the rest.</em></h2>
+          <p class="chapter-lede" data-reveal>Five halls, one team — an intimate kitty party for twenty or a five-hundred-strong wedding procession, there is a hall sized for it.</p>
         </header>
 
         <div class="maya-gallery">
@@ -392,7 +395,7 @@
           </article>
           <article class="hall" data-reveal>
             <h3>Mandala</h3><p class="hall-meta">Details on request</p>
-            <p class="hall-desc">Poochhiye zaroor — the team will walk you through it.</p>
+            <p class="hall-desc">Do ask — the team will gladly walk you through it.</p>
           </article>
         </div>
         <div class="cta-row center" data-reveal>
@@ -406,13 +409,13 @@
       <div class="wrap">
         <header class="chapter-head">
           <p class="chapter-no" data-reveal>Nº 04 — Rooms &amp; Suites</p>
-          <h2 data-reveal>Aaram hi<br><em>asli luxury.</em></h2>
-          <p class="chapter-lede" data-reveal>Three ways to sleep well in Bhagalpur. Every room air-conditioned, breakfast on us, chai on request.</p>
+          <h2 data-reveal>Comfort is<br><em>the real luxury.</em></h2>
+          <p class="chapter-lede" data-reveal>Three ways to sleep well in Bhagalpur. Every room air-conditioned, breakfast on us, tea whenever you ask.</p>
         </header>
 
         <div class="rate-strip" id="rate-strip" hidden>
           <div class="rate-strip-main">
-            <p class="rate-strip-label">Aaj ka direct rate · official website</p>
+            <p class="rate-strip-label">Tonight’s direct rate · official website</p>
             <p class="rate-strip-price"><strong id="rs-direct"></strong> <s id="rs-strike"></s> <span class="rate-strip-save" id="rs-save"></span></p>
             <p class="rate-strip-otas" id="rs-otas"></p>
           </div>
@@ -437,7 +440,8 @@
               </div>
               <div class="room-actions">
                 <button class="btn btn-gold btn-small js-book" type="button" data-purpose="stay" data-room="Deluxe Suite">Book on WhatsApp</button>
-                <a class="btn btn-ghost-dark btn-small" href="tel:+918877222233">Call</a>
+                <a class="btn btn-ghost-dark btn-small on-mobile" href="tel:+918877222233">Call</a>
+                <button class="btn btn-ghost-dark btn-small on-desktop js-book" type="button" data-purpose="stay">Enquire</button>
               </div>
             </div>
           </article>
@@ -456,7 +460,8 @@
               </div>
               <div class="room-actions">
                 <button class="btn btn-gold btn-small js-book" type="button" data-purpose="stay" data-room="Executive Room">Book on WhatsApp</button>
-                <a class="btn btn-ghost-dark btn-small" href="tel:+918877222233">Call</a>
+                <a class="btn btn-ghost-dark btn-small on-mobile" href="tel:+918877222233">Call</a>
+                <button class="btn btn-ghost-dark btn-small on-desktop js-book" type="button" data-purpose="stay">Enquire</button>
               </div>
             </div>
           </article>
@@ -475,12 +480,13 @@
               </div>
               <div class="room-actions">
                 <button class="btn btn-gold btn-small js-book" type="button" data-purpose="stay" data-room="Business Class Room">Book on WhatsApp</button>
-                <a class="btn btn-ghost-dark btn-small" href="tel:+918877222233">Call</a>
+                <a class="btn btn-ghost-dark btn-small on-mobile" href="tel:+918877222233">Call</a>
+                <button class="btn btn-ghost-dark btn-small on-desktop js-book" type="button" data-purpose="stay">Enquire</button>
               </div>
             </div>
           </article>
         </div>
-        <p class="rate-note" data-reveal id="rate-note">Book direct — best rate guaranteed. Group ya shaadi ki booking? <a href="https://wa.me/918877222233?text=Namaste%20Chinmaye%20Inn!%20Aaj%20ka%20best%20direct%20rate%20bata%20dijiye." rel="noopener">WhatsApp the desk</a> — turant jawab.</p>
+        <p class="rate-note" data-reveal id="rate-note">Book direct — best rate guaranteed. Group or wedding booking? <a href="https://wa.me/918877222233?text=Hello%20Chinmaye%20Inn!%20Could%20you%20share%20today%27s%20best%20direct%20rate%3F" rel="noopener">WhatsApp the desk</a> — quick replies.</p>
 
         <div class="amenities" data-reveal>
           <h3>Everything, thought through</h3>
@@ -496,10 +502,10 @@
     <!-- ======================= TESTIMONIALS ======================= -->
     <section class="chapter voices" aria-label="Guest words">
       <div class="wrap">
-        <p class="chapter-no center" data-reveal>Log kya kehte hain</p>
+        <p class="chapter-no center" data-reveal>What our guests say</p>
         <div class="quotes">
           <blockquote data-reveal>
-            <p>The Maya team ran our wedding like it was their own beti’s. Humein sirf muskurana tha.</p>
+            <p>The Maya team ran our wedding like it was their own daughter’s. All we had to do was smile.</p>
             <cite>Ritu Sharan · wedding host</cite>
           </blockquote>
           <blockquote data-reveal>
@@ -507,7 +513,7 @@
             <cite>Anup Verma · business traveller</cite>
           </blockquote>
           <blockquote data-reveal>
-            <p>Train at 6 am. They packed our breakfast and dropped us at the station. Yeh hoti hai mehmaan-nawazi.</p>
+            <p>Train at 6 am. They packed our breakfast and dropped us at the station. Now that is hospitality.</p>
             <cite>The Guptas · family stay</cite>
           </blockquote>
         </div>
@@ -517,7 +523,7 @@
     <!-- ======================= SEASONS ======================= -->
     <section class="chapter seasons" aria-label="Festivals and seasons">
       <div class="wrap">
-        <p class="chapter-no" data-reveal>Season ho ya tyohaar</p>
+        <p class="chapter-no" data-reveal>Every season, every festival</p>
         <h2 data-reveal>The calendar is<br><em>always full here.</em></h2>
       </div>
       <div class="season-track" data-reveal>
@@ -531,7 +537,7 @@
         </a>
         <a class="season-card js-book-link" href="#" data-purpose="stay" data-room="Chhath stay">
           <img src="assets/img/chhath-arghya.jpg" alt="Devotee offering arghya in the river at dusk during Chhath" loading="lazy" decoding="async">
-          <span><small>Kartik month</small>Chhath on the Ganga</span>
+          <span><small>Month of Kartik</small>Chhath on the Ganga</span>
         </a>
       </div>
     </section>
@@ -542,7 +548,7 @@
       <div class="wrap">
         <header class="chapter-head">
           <p class="chapter-no" data-reveal>The Family</p>
-          <h2 data-reveal>Hamare doosre<br><em>thikane.</em></h2>
+          <h2 data-reveal>Our other<br><em>addresses.</em></h2>
           <p class="chapter-lede" data-reveal>One promise, every address — see where else Chinmaye can host you.</p>
         </header>
         <div class="properties two">
@@ -566,7 +572,7 @@
             <div class="property-body">
               <p class="property-city">Deoghar · Baba Baidyanath Dham</p>
               <h3>Chinmaye Deoghar</h3>
-              <p class="property-desc">A calm address in Baba ki nagri — in construction, arriving next year.</p>
+              <p class="property-desc">A calm address in the holy city of Baba Baidyanath — in construction, arriving next year.</p>
               <span class="property-cta">See the concept <span aria-hidden="true">→</span></span>
             </div>
           </a>
@@ -580,18 +586,19 @@
       <div class="wrap split">
         <div class="split-copy">
           <p class="chapter-no" data-reveal>Contact</p>
-          <h2 data-reveal>Aaiye,<br><em>baithiye.</em></h2>
+          <h2 data-reveal>Come over,<br><em>sit awhile.</em></h2>
           <address data-reveal>
             Hotel Chinmaye Inn<br>
             RBSR Path, Khanjarpur,<br>
             Bhagalpur, Bihar 812001
           </address>
           <ul class="contact-links" data-reveal>
-            <li><a href="tel:+918877222233">+91 88772 22233 <small>tap to call</small></a></li>
-            <li><a href="https://wa.me/918877222233?text=Namaste%20Chinmaye%20Inn!" rel="noopener">WhatsApp us <small>replies fast</small></a></li>
+            <li class="on-mobile"><a href="tel:+918877222233">+91 88772 22233 <small>tap to call</small></a></li>
+            <li class="on-desktop"><a href="#" class="js-book-link" data-purpose="stay">Send an enquiry <small>+91 88772 22233 — dial from a phone</small></a></li>
+            <li><a href="https://wa.me/918877222233?text=Hello%20Chinmaye%20Inn!" rel="noopener">WhatsApp us <small>replies fast</small></a></li>
             <li><a href="mailto:info@chinmaye.in">info@chinmaye.in <small>email us</small></a></li>
             <li><a href="https://www.instagram.com/chinmayeinn" rel="noopener">@chinmayeinn <small>on Instagram</small></a></li>
-            <li><a href="careers/">Careers — CV bhejiye <small>join the parivaar</small></a></li>
+            <li><a href="careers/">Careers — send your CV <small>join the family</small></a></li>
           </ul>
         </div>
         <div class="map-frame" data-reveal>
@@ -608,7 +615,7 @@
     <div class="wrap footer-inner">
       <img class="footer-logo" src="assets/chinmaye-logo-ivory.webp" alt="Chinmaye Inn" width="200" height="132" loading="lazy" decoding="async">
       <nav class="footer-nav" aria-label="Footer">
-        <a href="#stay">Stay</a><a href="#kesaria">Kesaria</a><a href="#banquets">Banquets</a><a href="#contact">Contact</a><a href="careers/">Careers</a>
+        <a href="#address">The Address</a><a href="#kesaria">Our Restaurant · Kesaria</a><a href="#banquets">Banquets</a><a href="#stay">Stay</a><a href="#contact">Contact</a><a href="careers/">Careers</a>
       </nav>
       <p class="footer-line">RBSR Path, Khanjarpur, Bhagalpur · +91 88772 22233 · info@chinmaye.in</p>
       <p class="footer-note">Website concept sample · photography courtesy Hotel Chinmaye Inn · Ganga &amp; Chhath imagery: Wikimedia Commons, CC BY-SA 4.0 (555prembhai420 · Bdeb1) · food imagery: stock placeholders</p>
@@ -618,7 +625,7 @@
   <!-- ======================= STICKY BOOKING BAR (mobile) ======================= -->
   <div class="sticky-bar" role="region" aria-label="Quick booking">
     <a href="tel:+918877222233" aria-label="Call Hotel Chinmaye Inn">Call</a>
-    <a href="https://wa.me/918877222233?text=Namaste%20Chinmaye%20Inn!" rel="noopener" aria-label="WhatsApp Hotel Chinmaye Inn">WhatsApp</a>
+    <a href="https://wa.me/918877222233?text=Hello%20Chinmaye%20Inn!" rel="noopener" aria-label="WhatsApp Hotel Chinmaye Inn">WhatsApp</a>
     <button class="js-book" type="button" data-purpose="stay">Book now</button>
   </div>
 
@@ -628,7 +635,7 @@
       <button class="bm-close" value="cancel" formnovalidate aria-label="Close">×</button>
       <img class="bm-mark" src="assets/mark.webp" alt="" width="40" height="40" decoding="async">
       <p class="chapter-no">Enquiry</p>
-      <h2 id="bm-title">Bas ek message,<br><em>baaki hum dekh lenge.</em></h2>
+      <h2 id="bm-title">Just one message —<br><em>we’ll see to the rest.</em></h2>
 
       <fieldset class="bm-purpose">
         <legend>I’d like to…</legend>
@@ -651,7 +658,8 @@
 
       <button class="btn btn-gold bm-submit" value="send" type="submit">Send on WhatsApp</button>
       <p class="bm-secure" hidden></p>
-      <p class="bm-alt">Prefer talking? <a href="tel:+918877222233">Call +91 88772 22233</a></p>
+      <p class="bm-alt on-mobile">Prefer talking? <a href="tel:+918877222233">Call +91 88772 22233</a></p>
+      <p class="bm-alt on-desktop">Prefer talking? Reception is on <strong>+91 88772 22233</strong>, 24×7.</p>
     </form>
   </dialog>
 
