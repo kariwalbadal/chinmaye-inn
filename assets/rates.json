@@ -1,29 +1,29 @@
 {
-  "updated": "2026-08-04T06:09:20.565Z",
+  "updated": "2026-08-04T11:37:49.282Z",
   "checkin": "2026-08-04",
-  "roomName": "Business Class Room",
-  "direct": 2665,
-  "strikethrough": 4100,
+  "roomName": "Business Twin Bed Room",
+  "direct": 2990,
+  "strikethrough": 4600,
   "otas": [
     {
       "name": "Agoda",
-      "rate": 3800
+      "rate": 4300
     },
     {
       "name": "Booking.com",
-      "rate": 3800
+      "rate": 4300
     },
     {
       "name": "Cleartrip",
-      "rate": 3800
+      "rate": 4300
     },
     {
       "name": "Goibibo",
-      "rate": 3800
+      "rate": 4300
     },
     {
       "name": "Travelguru",
-      "rate": 3800
+      "rate": 4300
     }
   ],
   "savingsPct": 30,
@@ -31,10 +31,10 @@
   "otaRoomKey": "business",
   "rooms": {
     "business": {
-      "rate": 2665,
-      "rack": 4100,
-      "left": 1,
-      "roomName": "Business Class Room"
+      "rate": 2990,
+      "rack": 4600,
+      "left": 2,
+      "roomName": "Business Twin Bed Room"
     },
     "executive": {
       "rate": 3185,
