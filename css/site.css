@@ -194,10 +194,6 @@ a { color: inherit; }
 .main-nav a:hover { opacity: 1; }
 
 .header-actions { display: flex; align-items: center; gap: 18px; }
-.header-call {
-  display: none; font-size: .85rem; letter-spacing: .08em;
-  text-decoration: none; opacity: .9;
-}
 .header-actions .btn { display: none; }
 
 .menu-toggle {
@@ -209,9 +205,10 @@ a { color: inherit; }
 body.menu-open .menu-toggle span:first-child { transform: translateY(4.25px) rotate(45deg); }
 body.menu-open .menu-toggle span:last-child { transform: translateY(-4.25px) rotate(-45deg); }
 
-@media (min-width: 900px) {
+/* The full nav + Reserve button need ~1080px. Below that — landscape phones
+   especially — the brand name collides with the first nav item, so use the menu. */
+@media (min-width: 1080px) {
   .main-nav { display: flex; }
-  .header-call { display: inline; }
   .header-actions .btn { display: inline-flex; }
   .menu-toggle { display: none; }
 }
@@ -261,7 +258,7 @@ body.menu-open { overflow: hidden; }
 }
 .sticky-bar a + a { border-left: 1px solid rgba(247, 241, 232, .15); }
 .sticky-bar button { background: var(--gold); color: var(--ink); }
-@media (min-width: 900px) { .sticky-bar { display: none; } }
+@media (min-width: 1080px) { .sticky-bar { display: none; } }
 
 /* ---------- footer ---------- */
 .site-footer {
@@ -810,10 +807,9 @@ body.menu-open { overflow: hidden; }
    A tel: link is dead weight on a laptop; desktop gets the site's own
    enquiry form instead, phones keep tap-to-call. */
 .on-desktop { display: none; }
-@media (min-width: 900px) {
+@media (min-width: 1080px) {
   .on-mobile { display: none; }
   .on-desktop { display: inline-flex; }
   li.on-desktop { display: list-item; }
   p.on-desktop { display: block; }
 }
-.header-call { color: inherit; white-space: nowrap; }
