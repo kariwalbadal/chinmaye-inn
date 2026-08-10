@@ -55,6 +55,12 @@
     .apply-sent h3 { margin: 0 0 10px; color: var(--wine); font-size: 1.3rem; }
     .apply-sent p { margin: 0 0 8px; font-size: .92rem; line-height: 1.6; }
     .apply-error { margin: 12px 0 0; font-size: .82rem; color: var(--wine); font-weight: 600; }
+    /* confirms to the applicant that the file really is attached */
+    .apply-chosen:not(:empty) {
+      margin: -8px 0 16px; font-size: .78rem; color: var(--wine);
+      display: flex; align-items: baseline; gap: 7px;
+    }
+    .apply-chosen:not(:empty)::before { content: "✓"; font-size: .9rem; }
     .walkin { margin-top: 26px; border: 1px solid rgba(176,141,87,.45); background: #fff; padding: clamp(18px, 2.5vw, 24px); }
     .walkin h3 { margin: 0 0 8px; color: var(--wine); font-size: 1.15rem; }
     .walkin p { margin: 0; font-size: .9rem; line-height: 1.6; }
@@ -246,6 +252,7 @@
               </select>
               <label for="cf-cv">Your CV <span class="req">— PDF or Word, optional</span></label>
               <input id="cf-cv" name="attachment" type="file" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+              <p class="apply-chosen" id="cf-chosen" role="status"></p>
               <label for="cf-msg">A little about you (optional)</label>
               <textarea id="cf-msg" name="msg" placeholder="Experience, city, when you can join…"></textarea>
               <!-- spam trap: real people never fill this -->
@@ -358,8 +365,56 @@
         return;
       }
 
+      /* The relay drops the whole submission if the files total more than 10MB,
+         and it does so silently — so refuse oversized CVs here, where we can say why. */
+      const MAX_BYTES = 10 * 1024 * 1024;
+      const cv = document.getElementById("cf-cv");
+      const chosen = document.getElementById("cf-chosen");
+
+      const prettySize = (b) =>
+        b >= 1024 * 1024 ? (b / 1024 / 1024).toFixed(1) + " MB" : Math.max(1, Math.round(b / 1024)) + " KB";
+
+      const fail = (msg) => {
+        errBox.textContent = msg;
+        errBox.hidden = false;
+        errBox.scrollIntoView({ block: "center", behavior: "smooth" });
+      };
+
+      /* show the applicant that their file really is attached */
+      cv.addEventListener("change", () => {
+        const f = cv.files && cv.files[0];
+        if (!f) { chosen.textContent = ""; errBox.hidden = true; return; }
+        if (f.size > MAX_BYTES) {
+          chosen.textContent = "";
+          cv.value = "";
+          fail(`That CV is ${prettySize(f.size)} — the limit is 10 MB. Send a smaller PDF, or use the WhatsApp button and attach it there.`);
+          return;
+        }
+        errBox.hidden = true;
+        chosen.textContent = `Attached: ${f.name} (${prettySize(f.size)})`;
+      });
+
       form.addEventListener("submit", (e) => {
         if (!form.reportValidity()) { e.preventDefault(); return; }
+
+        const f = cv.files && cv.files[0];
+        if (f && f.size > MAX_BYTES) {
+          e.preventDefault();
+          fail(`That CV is ${prettySize(f.size)} — the limit is 10 MB. Send a smaller PDF, or use the WhatsApp button and attach it there.`);
+          return;
+        }
+        /* no CV chosen is the commonest way an application arrives empty — ask once */
+        if (!f && !form.dataset.confirmedNoCv) {
+          e.preventDefault();
+          if (confirm("You haven't attached a CV. Send the application without one?")) {
+            form.dataset.confirmedNoCv = "1";
+            /* deferred: a form ignores requestSubmit() called while its own
+               submit event is still firing, which would swallow the send */
+            setTimeout(() => form.requestSubmit(btn), 0);
+          }
+          return;
+        }
+
         errBox.hidden = true;
         btn.disabled = true;
         btn.textContent = "Sending…";
