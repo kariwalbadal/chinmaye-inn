@@ -18,7 +18,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Verify the live site is serving fresh, sellable rates
         run: |
-          curl -fsS --max-time 20 "https://chinmaye.in/assets/rates.json?watchdog=$(date +%s)" -o live.json
+          curl -fsS --max-time 20 "https://inn.chinmaye.in/assets/rates.json?watchdog=$(date +%s)" -o live.json
           node -e "
             const d = require('./live.json');
             const age = (Date.now() - new Date(d.updated).getTime()) / 36e5;
@@ -32,7 +32,7 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           TITLE="🚨 Rate feed alarm — live rates are not updating"
-          BODY="The production watchdog found chinmaye.in serving stale or empty rates at $(date -u +%F' '%H:%M) UTC.
+          BODY="The production watchdog found inn.chinmaye.in serving stale or empty rates at $(date -u +%F' '%H:%M) UTC.
 
           Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
 

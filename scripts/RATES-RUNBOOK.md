@@ -22,7 +22,7 @@ Action refreshes 4× a day from the hotel's own STAAH booking engine.
   `rates.json` has no sellable rate or is stale. A failed scheduled workflow
   emails the repo owner.
 - **`rates-watchdog.yml`** — every 6 h, independently fetches
-  `https://chinmaye.in/assets/rates.json` (what production actually serves) and
+  `https://inn.chinmaye.in/assets/rates.json` (what production actually serves) and
   fails if it's stale (>26 h) or empty. This also catches broken deploys and
   GitHub auto-disabling schedules after 60 days without commits.
 - Both alarms **open (or update) a GitHub issue titled "🚨 Rate feed alarm"** on
