@@ -26,7 +26,7 @@
   - Mandala — details on request
 
 ## Booking
-- Online: secure booking handoff on https://chinmaye.in/
+- Online: secure booking handoff on https://inn.chinmaye.in/
 - WhatsApp/Call: +91 88772 22233
 
 ## Family
