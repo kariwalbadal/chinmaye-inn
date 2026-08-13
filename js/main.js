@@ -202,6 +202,10 @@ if (rateStrip) {
       const ageH = (Date.now() - new Date(d.updated).getTime()) / 36e5;
       if (ageH > 36) return; // stale — leave the static page as-is
 
+      /* the feed quotes tonight, or falls back to tomorrow when same-night sales close */
+      const night = d.night === "tomorrow" ? "tomorrow" : "tonight";
+      const Night = night[0].toUpperCase() + night.slice(1);
+
       const otaList = (d.otas || []).filter((o) => o.rate > 0);
       const otaHtml = otaList.slice(0, 3).map((o) => `${esc(o.name)} <s>${inr(o.rate)}</s>`).join(" · ");
       const engineUrl = BOOKING.staahActive("stay")
@@ -218,21 +222,21 @@ if (rateStrip) {
         p.classList.add("live");
         if (r.rate) {
           p.innerHTML =
-            "tonight " + (r.rack ? `<s>${inr(r.rack)}</s> ` : "") +
+            night + " " + (r.rack ? `<s>${inr(r.rack)}</s> ` : "") +
             `<strong>${inr(r.rate)}</strong><span>/night</span>` +
             (r.left > 0 && r.left <= 5 ? `<em class="room-left">${"only " + r.left + " left"}</em>` : "");
         } else {
           /* sold out tonight — still hand off to the engine, where other dates are open */
           p.insertAdjacentHTML(
             "beforeend",
-            `<em class="room-left">sold out tonight` +
+            `<em class="room-left">sold out ${night}` +
               (engineUrl ? ` · <a href="${engineUrl}" target="_blank" rel="noopener">see other dates</a>` : "") +
               "</em>"
           );
         }
         /* the OTA comparison speaks for one room type — show it on that card */
         if (p.dataset.rateKey === d.otaRoomKey && otaHtml)
-          p.insertAdjacentHTML("afterend", `<span class="room-otas">This room on OTAs tonight: ${otaHtml}</span>`);
+          p.insertAdjacentHTML("afterend", `<span class="room-otas">This room on OTAs ${night}: ${otaHtml}</span>`);
       });
 
       if (!d.direct || !d.available) return;
@@ -243,18 +247,20 @@ if (rateStrip) {
         document.getElementById("rs-save").textContent = "Save " + d.savingsPct + "% direct";
       const cheapestEverywhere = otaList.length && otaList.every((o) => o.rate > d.direct);
       document.getElementById("rs-otas").innerHTML = otaHtml
-        ? "Elsewhere tonight: " + otaHtml + (cheapestEverywhere ? ` — <strong>cheapest right here</strong>` : "")
+        ? `Elsewhere ${night}: ` + otaHtml + (cheapestEverywhere ? ` — <strong>cheapest right here</strong>` : "")
         : "";
       const t = new Date(d.updated);
       document.getElementById("rs-note").textContent =
-        `Tonight · ${d.roomName} · checked ${t.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} IST via our booking engine`;
+        `${Night} · ${d.roomName} · checked ${t.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} IST via our booking engine`;
+      const label = rateStrip.querySelector(".rate-strip-label");
+      if (label) label.textContent = `${Night}’s direct rate · official website`;
       rateStrip.hidden = false;
 
       /* the tariff footnote can speak in the present tense now */
       const note = document.getElementById("rate-note");
       if (note)
         note.innerHTML =
-          "The rates above are tonight’s live rates, straight from our booking engine" +
+          `The rates above are ${night}’s live rates, straight from our booking engine` +
           (cheapestEverywhere ? " — lower than every OTA" : "") +
           '. Group or wedding booking? <a href="https://wa.me/918877222233?text=Hello%20Chinmaye%20Inn!%20Could%20you%20share%20today%27s%20best%20direct%20rate%3F" rel="noopener">WhatsApp the desk</a> — quick replies.';
     })

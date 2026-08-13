@@ -792,6 +792,7 @@ body.menu-open { overflow: hidden; }
 .hall-desc { margin: 0; font-size: .88rem; line-height: 1.55; }
 
 /* live direct-rate strip (fed by assets/rates.json) */
+.rate-strip[hidden] { display: none; } /* author display:flex must not defeat the hidden attribute */
 .rate-strip {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 16px 24px; margin-bottom: clamp(28px, 4vw, 40px);

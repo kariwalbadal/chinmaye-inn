@@ -1,12 +1,14 @@
 name: Refresh live rates
 on:
   schedule:
-    # ~09:00, 15:00, 21:00 IST
+    # ~09:00, 15:00, 21:00 IST, plus 00:15 IST so the day rolls over cleanly
     - cron: "30 3,9,15 * * *"
+    - cron: "45 18 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
+  issues: write
 
 jobs:
   refresh:
@@ -28,3 +30,29 @@ jobs:
           git config user.email "actions@github.com"
           git add assets/rates.json
           git diff --cached --quiet && echo "no change" || git commit -m "rates: refresh $(date -u +%F_%H:%M)" && git push
+      - name: Health check — a sellable rate must exist
+        run: |
+          node -e "
+            const d = require('./assets/rates.json');
+            const age = (Date.now() - new Date(d.updated).getTime()) / 36e5;
+            if (age > 26) { console.error('FAIL: rates.json is ' + age.toFixed(1) + 'h old'); process.exit(1); }
+            if (!d.available || !d.direct) { console.error('FAIL: no sellable rate for tonight OR tomorrow — either genuinely sold out two nights straight (rare) or the STAAH feed/parse broke'); process.exit(1); }
+            console.log('OK: ' + d.night + ' ' + d.checkin + ' direct ₹' + d.direct);
+          "
+      - name: Raise the alarm
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="🚨 Rate feed alarm — live rates are not updating"
+          BODY="The scheduled rate refresh failed on $(date -u +%F' '%H:%M) UTC.
+
+          Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          The website's 'Tonight's direct rate' strip will hide (or go stale) until this is fixed. Follow scripts/RATES-RUNBOOK.md in this repo to diagnose."
+          EXISTING=$(gh issue list --state open --search "Rate feed alarm in:title" --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Still failing: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          else
+            gh issue create --title "$TITLE" --body "$BODY"
+          fi

@@ -33,8 +33,9 @@ const ALL_ROOM_IDS = Object.values(ROOM_MAP).flatMap((m) => m.ids);
 
 const istNow = new Date(Date.now() + 5.5 * 3600e3);
 const day = (d) => d.toISOString().slice(0, 10);
-const checkin = day(istNow);
-const checkout = day(new Date(istNow.getTime() + 864e5));
+const plusDays = (iso, n) => day(new Date(new Date(iso + "T00:00:00Z").getTime() + n * 864e5));
+let checkin = day(istNow);
+let checkout = plusDays(checkin, 1);
 const dmy = (iso) => iso.split("-").reverse().join("-");
 
 async function fetchRetry(url, init, tries = 3) {
@@ -53,12 +54,13 @@ async function fetchRetry(url, init, tries = 3) {
 
 /* ---- 1. STAAH BE data API: per-room rates + inventory (primary) ---- */
 let rooms = null; // { business: {rate, rack, left, roomName}, ... }
-try {
+let night = "tonight";
+async function fetchRoomsFor(ci, co) {
   const be = await fetchRetry("https://csbe.staah.net/?RequestType=bedataguest&JDRN=Y", {
     method: "POST",
     headers: { "Content-Type": "application/json", "X-Api-Key": CSBE_KEY, Origin: ORIGIN },
     body: JSON.stringify({
-      Product: "no", PropertyId: PROPERTY_ID, CheckInDate: checkin, CheckOutDate: checkout,
+      Product: "no", PropertyId: PROPERTY_ID, CheckInDate: ci, CheckOutDate: co,
       JDRN: "Y", Country: "IN", DeviceType: "desktop", RoomID: ALL_ROOM_IDS.join(","), Lang: "EN",
       Rooms: [{ Adult: 2, Children: [] }],
     }),
@@ -69,27 +71,45 @@ try {
     const inv = r.MinInventory || 0;
     let best = null;
     for (const plan of r.RatePlans || []) {
-      const night = plan.Rates?.[0]?.Dates?.[checkin];
-      if (!night) continue;
-      const rate = Math.round(parseFloat(night.RateBeforeTax));
-      const rack = Math.round(rate + (parseFloat(night.Savings) || 0));
+      const nightRate = plan.Rates?.[0]?.Dates?.[ci];
+      if (!nightRate) continue;
+      const rate = Math.round(parseFloat(nightRate.RateBeforeTax));
+      const rack = Math.round(rate + (parseFloat(nightRate.Savings) || 0));
       if (!best || rate < best.rate) best = { rate, rack };
     }
     if (inv > 0 && best) byId[r.RoomId] = { ...best, left: inv };
   }
-  rooms = {};
+  const result = {};
   for (const [key, map] of Object.entries(ROOM_MAP)) {
     const offers = map.ids.filter((id) => byId[id]).map((id) => ({ id, ...byId[id] }));
     if (offers.length) {
       const cheapest = offers.reduce((a, b) => (b.rate < a.rate ? b : a));
-      rooms[key] = {
+      result[key] = {
         rate: cheapest.rate,
         rack: cheapest.rack > cheapest.rate ? cheapest.rack : null,
         left: cheapest.left,
         roomName: map.names[cheapest.id],
       };
     } else {
-      rooms[key] = { rate: null }; // sold out tonight
+      result[key] = { rate: null }; // sold out for this night
+    }
+  }
+  return result;
+}
+try {
+  rooms = await fetchRoomsFor(checkin, checkout);
+  // Same-night sales often close in the evening. An empty strip sells
+  // nothing — quote tomorrow's night instead, clearly labelled.
+  if (rooms && !Object.values(rooms).some((r) => r.rate)) {
+    const ci2 = plusDays(checkin, 1);
+    const co2 = plusDays(checkin, 2);
+    const tomorrow = await fetchRoomsFor(ci2, co2);
+    if (tomorrow && Object.values(tomorrow).some((r) => r.rate)) {
+      rooms = tomorrow;
+      checkin = ci2;
+      checkout = co2;
+      night = "tomorrow";
+      console.log("tonight sold out — quoting tomorrow", ci2);
     }
   }
 } catch (e) {
@@ -148,6 +168,7 @@ if (wmrRoomName)
 const bestOta = otas.length ? Math.min(...otas.map((o) => o.rate)) : null;
 const out = {
   updated: new Date().toISOString(),
+  night,
   checkin,
   roomName,
   direct,

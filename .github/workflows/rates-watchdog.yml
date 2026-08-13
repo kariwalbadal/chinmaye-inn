@@ -1,0 +1,45 @@
+name: Rates watchdog
+# Independent check of what visitors ACTUALLY see on production.
+# Catches everything the refresh job can't: failed deploys, CDN serving
+# stale files, the refresh workflow being disabled by GitHub after 60
+# days of repo inactivity, etc.
+on:
+  schedule:
+    - cron: "15 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify the live site is serving fresh, sellable rates
+        run: |
+          curl -fsS --max-time 20 "https://chinmaye.in/assets/rates.json?watchdog=$(date +%s)" -o live.json
+          node -e "
+            const d = require('./live.json');
+            const age = (Date.now() - new Date(d.updated).getTime()) / 36e5;
+            console.log('production rates.json: updated ' + age.toFixed(1) + 'h ago, night=' + d.night + ', direct=' + d.direct);
+            if (age > 26) { console.error('FAIL: production file is stale (' + age.toFixed(1) + 'h) — refresh job or deploy is broken'); process.exit(1); }
+            if (!d.available || !d.direct) { console.error('FAIL: production shows no sellable rate'); process.exit(1); }
+          "
+      - name: Raise the alarm
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TITLE="🚨 Rate feed alarm — live rates are not updating"
+          BODY="The production watchdog found chinmaye.in serving stale or empty rates at $(date -u +%F' '%H:%M) UTC.
+
+          Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+
+          Follow scripts/RATES-RUNBOOK.md in this repo to diagnose."
+          EXISTING=$(gh issue list --state open --search "Rate feed alarm in:title" --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" --body "Watchdog still failing: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+          else
+            gh issue create --title "$TITLE" --body "$BODY"
+          fi

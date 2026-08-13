@@ -1,22 +1,53 @@
 {
-  "updated": "2026-08-13T16:23:02.121Z",
-  "checkin": "2026-08-13",
-  "roomName": null,
-  "direct": null,
-  "strikethrough": null,
-  "otas": [],
-  "savingsPct": null,
-  "available": false,
-  "otaRoomKey": null,
+  "updated": "2026-08-13T19:08:21.019Z",
+  "night": "tonight",
+  "checkin": "2026-08-14",
+  "roomName": "Business Class Room",
+  "direct": 2925,
+  "strikethrough": 4500,
+  "otas": [
+    {
+      "name": "Agoda",
+      "rate": 4200
+    },
+    {
+      "name": "Booking.com",
+      "rate": 4200
+    },
+    {
+      "name": "Cleartrip",
+      "rate": 4200
+    },
+    {
+      "name": "Goibibo",
+      "rate": 4200
+    },
+    {
+      "name": "Travelguru",
+      "rate": 4200
+    }
+  ],
+  "savingsPct": 30,
+  "available": true,
+  "otaRoomKey": "business",
   "rooms": {
     "business": {
-      "rate": null
+      "rate": 2925,
+      "rack": 4500,
+      "left": 6,
+      "roomName": "Business Class Room"
     },
     "executive": {
-      "rate": null
+      "rate": 2990,
+      "rack": 4600,
+      "left": 5,
+      "roomName": "Executive Class Room"
     },
     "deluxe": {
-      "rate": null
+      "rate": 4550,
+      "rack": 7000,
+      "left": 4,
+      "roomName": "Deluxe Suite"
     }
   },
   "source": "STAAH booking engine · WatchMyRate"
