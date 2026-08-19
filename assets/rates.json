@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-18T19:16:52.952Z",
+  "updated": "2026-08-19T04:06:22.777Z",
   "night": "tonight",
   "checkin": "2026-08-19",
   "roomName": "Business Twin Bed Room",
@@ -34,7 +34,7 @@
     "business": {
       "rate": 2665,
       "rack": 4100,
-      "left": 2,
+      "left": 1,
       "roomName": "Business Twin Bed Room"
     },
     "executive": {
