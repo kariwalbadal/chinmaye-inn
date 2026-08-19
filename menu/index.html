@@ -5,24 +5,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Menu — Kesaria, Hotel Chinmaye Inn</title>
   <meta name="description" content="The Kesaria menu card — Indian, Oriental and Continental, on the rooftop at Hotel Chinmaye Inn, Bhagalpur.">
-  <link rel="canonical" href="https://inn.chinmaye.in/menu.pdf">
+  <link rel="canonical" href="https://inn.chinmaye.in/menu">
+  <meta name="theme-color" content="#F7F1E8">
+  <link rel="preload" as="image" href="pages/p01.webp" fetchpriority="high">
   <!-- Table QR codes point here as well as at the PDF itself, so this address
-       must keep working forever. Whatever the menu becomes later — a new PDF,
-       an HTML card — it gets served from this path and the printed QRs stand. -->
-  <meta http-equiv="refresh" content="0; url=/menu.pdf">
-  <script>location.replace("/menu.pdf");</script>
+       must keep working forever. This page renders the menu as page images
+       because Android Chrome hands a raw .pdf navigation to the download
+       manager instead of displaying it. The PDF stays at /menu.pdf for
+       download and printing. Regenerate the images with scripts/build-menu.py
+       whenever menu.pdf changes. -->
   <style>
-    body { margin:0; min-height:100vh; display:grid; place-items:center; text-align:center;
-           background:#F7F1E8; color:#26222A; font-family:"Jost","Helvetica Neue",Arial,sans-serif; padding:24px; }
-    a { color:#8E1A4F; }
-    .k { font-size:.72rem; letter-spacing:.32em; text-transform:uppercase; color:#B08D57; margin:0 0 10px; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:#F7F1E8; color:#26222A;
+           font-family:"Jost","Helvetica Neue",Arial,sans-serif;
+           -webkit-text-size-adjust:100%; }
+    header { text-align:center; padding:22px 20px 14px; }
+    .k { font-size:.7rem; letter-spacing:.32em; text-transform:uppercase;
+         color:#B08D57; margin:0 0 6px; }
+    h1 { font-size:1.15rem; font-weight:600; margin:0; letter-spacing:.02em; }
+    main { max-width:820px; margin:0 auto; padding:6px 12px 28px; }
+    figure { margin:0 0 14px; }
+    img { display:block; width:100%; height:auto; border-radius:3px;
+          background:#EFE6D8; box-shadow:0 1px 6px rgba(38,34,42,.13); }
+    footer { text-align:center; padding:6px 20px 40px; font-size:.9rem; }
+    .dl { display:inline-block; padding:11px 22px; border-radius:999px;
+          background:#8E1A4F; color:#fff; text-decoration:none; font-weight:500; }
+    .note { margin:14px 0 0; font-size:.8rem; color:#6C6470; }
+    .note a { color:#8E1A4F; }
   </style>
 </head>
 <body>
-  <div>
-    <p class="k">Kesaria · Hotel Chinmaye Inn</p>
-    <p>Opening the menu…</p>
-    <p><a href="/menu.pdf">Tap here if it does not open automatically</a></p>
-  </div>
+  <header>
+    <p class="k">Hotel Chinmaye Inn</p>
+    <h1>Kesaria — Menu 2025–2026</h1>
+  </header>
+  <main id="pages"></main>
+  <footer>
+    <a class="dl" href="/menu.pdf">Download the PDF</a>
+    <p class="note">Bhagalpur · <a href="/">chinmaye.in</a></p>
+  </footer>
+  <script>
+    var N = 21, W = 1240, H = 1605, m = document.getElementById('pages'), h = '';
+    for (var i = 1; i <= N; i++) {
+      var n = (i < 10 ? '0' : '') + i;
+      h += '<figure><img src="pages/p' + n + '.webp" width="' + W + '" height="' + H +
+           '" alt="Kesaria menu, page ' + i + ' of ' + N + '"' +
+           (i === 1 ? ' fetchpriority="high"' : ' loading="lazy" decoding="async"') +
+           '></figure>';
+    }
+    m.innerHTML = h;
+  </script>
+  <noscript>
+    <main>
+      <figure><img src="pages/p01.webp" width="1240" height="1605" alt="Kesaria menu, page 1 of 21"></figure>
+      <p style="text-align:center"><a href="/menu.pdf">Open the full menu PDF</a></p>
+    </main>
+  </noscript>
 </body>
 </html>
