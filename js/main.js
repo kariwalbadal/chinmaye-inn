@@ -202,15 +202,20 @@ if (rateStrip) {
       const ageH = (Date.now() - new Date(d.updated).getTime()) / 36e5;
       if (ageH > 36) return; // stale — leave the static page as-is
 
-      /* the feed quotes tonight, or falls back to tomorrow when same-night sales close */
-      const night = d.night === "tomorrow" ? "tomorrow" : "tonight";
-      const Night = night[0].toUpperCase() + night.slice(1);
+      /* the feed quotes tonight, tomorrow, or — when the house is full for a
+         run of nights — the next night that is actually open, named outright */
+      const nightDate = d.checkin ? new Date(d.checkin + "T00:00:00+05:30") : null;
+      const future = d.night !== "tonight" && d.night !== "tomorrow" && nightDate;
+      const night = future
+        ? nightDate.toLocaleDateString("en-IN", { timeZone: "Asia/Kolkata", weekday: "short", day: "numeric", month: "short" })
+        : d.night === "tomorrow" ? "tomorrow" : "tonight";
+      const Night = future ? night : night[0].toUpperCase() + night.slice(1);
 
       const otaList = (d.otas || []).filter((o) => o.rate > 0);
       const otaHtml = otaList.slice(0, 3).map((o) => `${esc(o.name)} <s>${inr(o.rate)}</s>`).join(" · ");
       const engineUrl = BOOKING.staahActive("stay")
         ? CONFIG.staahUrl
-            .replaceAll("{checkin}", new Date().toISOString().slice(0, 10))
+            .replaceAll("{checkin}", d.checkin || new Date().toISOString().slice(0, 10))
             .replaceAll("{checkout}", "")
             .replaceAll("{adults}", "2")
         : null;
@@ -253,14 +258,19 @@ if (rateStrip) {
       document.getElementById("rs-note").textContent =
         `${Night} · ${d.roomName} · checked ${t.toLocaleString("en-IN", { timeZone: "Asia/Kolkata", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })} IST via our booking engine`;
       const label = rateStrip.querySelector(".rate-strip-label");
-      if (label) label.textContent = `${Night}’s direct rate · official website`;
+      if (label)
+        label.textContent = future
+          ? `Next open date: ${Night} · direct rate`
+          : `${Night}’s direct rate · official website`;
       rateStrip.hidden = false;
 
       /* the tariff footnote can speak in the present tense now */
       const note = document.getElementById("rate-note");
       if (note)
         note.innerHTML =
-          `The rates above are ${night}’s live rates, straight from our booking engine` +
+          (future
+            ? `The rates above are our live rates for ${night}, our next open date, straight from our booking engine`
+            : `The rates above are ${night}’s live rates, straight from our booking engine`) +
           (cheapestEverywhere ? " — lower than every OTA" : "") +
           '. Group or wedding booking? <a href="https://wa.me/918877222233?text=Hello%20Chinmaye%20Inn!%20Could%20you%20share%20today%27s%20best%20direct%20rate%3F" rel="noopener">WhatsApp the desk</a> — quick replies.';
     })

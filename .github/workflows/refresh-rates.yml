@@ -36,8 +36,9 @@ jobs:
             const d = require('./assets/rates.json');
             const age = (Date.now() - new Date(d.updated).getTime()) / 36e5;
             if (age > 26) { console.error('FAIL: rates.json is ' + age.toFixed(1) + 'h old'); process.exit(1); }
-            if (!d.available || !d.direct) { console.error('FAIL: no sellable rate for tonight OR tomorrow — either genuinely sold out two nights straight (rare) or the STAAH feed/parse broke'); process.exit(1); }
+            if (!d.available || !d.direct) { console.error('FAIL: no sellable rate in the next 30 nights — either the house is closed for a month (rare) or the STAAH feed/parse broke'); process.exit(1); }
             console.log('OK: ' + d.night + ' ' + d.checkin + ' direct ₹' + d.direct);
+            if (d.night === 'future') console.log('NOTE: tonight and tomorrow are sold out — quoting the next open night, ' + d.checkin);
           "
       - name: Raise the alarm
         if: failure()

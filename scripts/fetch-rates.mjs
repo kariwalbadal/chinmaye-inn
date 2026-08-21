@@ -1,5 +1,7 @@
-// Refreshes assets/rates.json with tonight's live direct rates (whole
-// property + per room type) and the OTA comparison, pulled from the
+// Refreshes assets/rates.json with live direct rates for the next night
+// that is actually sellable — tonight when tonight is open, otherwise the
+// first open night after it (whole property + per room type), along with
+// the OTA comparison for that same night, pulled from the
 // hotel's own STAAH booking engine feeds (csbe.staah.net) and its
 // WatchMyRate rate-shopper widget.
 // Run by .github/workflows/refresh-rates.yml (and manually via
@@ -96,20 +98,25 @@ async function fetchRoomsFor(ci, co) {
   }
   return result;
 }
+// Same-night sales close in the evening, and a full house can run for
+// several nights (a wedding block, a festival). A closed night is not a
+// closed hotel — walk forward until a night is actually sellable and
+// quote that one, clearly labelled, instead of showing nothing.
+const LOOKAHEAD_NIGHTS = 30;
 try {
-  rooms = await fetchRoomsFor(checkin, checkout);
-  // Same-night sales often close in the evening. An empty strip sells
-  // nothing — quote tomorrow's night instead, clearly labelled.
-  if (rooms && !Object.values(rooms).some((r) => r.rate)) {
-    const ci2 = plusDays(checkin, 1);
-    const co2 = plusDays(checkin, 2);
-    const tomorrow = await fetchRoomsFor(ci2, co2);
-    if (tomorrow && Object.values(tomorrow).some((r) => r.rate)) {
-      rooms = tomorrow;
-      checkin = ci2;
-      checkout = co2;
-      night = "tomorrow";
-      console.log("tonight sold out — quoting tomorrow", ci2);
+  const start = checkin;
+  for (let n = 0; n <= LOOKAHEAD_NIGHTS; n++) {
+    const ci = plusDays(start, n);
+    const co = plusDays(start, n + 1);
+    const found = await fetchRoomsFor(ci, co);
+    if (!rooms) rooms = found; // tonight's shape, in case nothing is ever open
+    if (found && Object.values(found).some((r) => r.rate)) {
+      rooms = found;
+      checkin = ci;
+      checkout = co;
+      night = n === 0 ? "tonight" : n === 1 ? "tomorrow" : "future";
+      if (n) console.log(`sold out for the next ${n} night(s) — quoting ${ci}`);
+      break;
     }
   }
 } catch (e) {
