@@ -1,7 +1,7 @@
 {
-  "updated": "2026-09-16T14:16:10.734Z",
+  "updated": "2026-09-16T18:59:44.131Z",
   "night": "tonight",
-  "checkin": "2026-09-16",
+  "checkin": "2026-09-17",
   "roomName": "Business Class Room",
   "direct": 3510,
   "strikethrough": 5400,
@@ -34,7 +34,7 @@
     "business": {
       "rate": 3510,
       "rack": 5400,
-      "left": 4,
+      "left": 5,
       "roomName": "Business Class Room"
     },
     "executive": {
