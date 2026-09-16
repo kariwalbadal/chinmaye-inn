@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-15T21:46:23.593Z",
+  "updated": "2026-09-16T08:44:59.976Z",
   "night": "tonight",
   "checkin": "2026-09-16",
   "roomName": "Business Class Room",
@@ -34,7 +34,7 @@
     "business": {
       "rate": 2665,
       "rack": 4100,
-      "left": 6,
+      "left": 5,
       "roomName": "Business Class Room"
     },
     "executive": {
@@ -44,7 +44,10 @@
       "roomName": "Executive Class Room"
     },
     "deluxe": {
-      "rate": null
+      "rate": 4550,
+      "rack": 7000,
+      "left": 1,
+      "roomName": "Deluxe Suite"
     }
   },
   "source": "STAAH booking engine · WatchMyRate"
