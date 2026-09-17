@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-17T08:49:15.583Z",
+  "updated": "2026-09-17T14:22:54.949Z",
   "night": "tonight",
   "checkin": "2026-09-17",
   "roomName": "Business Class Room",
@@ -34,7 +34,7 @@
     "business": {
       "rate": 3510,
       "rack": 5400,
-      "left": 4,
+      "left": 2,
       "roomName": "Business Class Room"
     },
     "executive": {
