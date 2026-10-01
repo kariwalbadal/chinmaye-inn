@@ -1,45 +1,45 @@
 {
-  "updated": "2026-09-30T22:38:40.199Z",
+  "updated": "2026-10-01T10:20:59.598Z",
   "night": "tonight",
   "checkin": "2026-10-01",
   "roomName": "Business Class Room",
-  "direct": 2665,
-  "strikethrough": 4100,
+  "direct": 1885,
+  "strikethrough": 2900,
   "otas": [
     {
       "name": "Agoda",
-      "rate": 3800
+      "rate": 2600
     },
     {
       "name": "Booking.com",
-      "rate": 3800
+      "rate": 2600
     },
     {
       "name": "Cleartrip",
-      "rate": 3800
+      "rate": 2600
     },
     {
       "name": "Goibibo",
-      "rate": 3800
+      "rate": 2600
     },
     {
       "name": "Travelguru",
-      "rate": 3800
+      "rate": 2600
     }
   ],
-  "savingsPct": 30,
+  "savingsPct": 28,
   "available": true,
   "otaRoomKey": "business",
   "rooms": {
     "business": {
-      "rate": 2665,
-      "rack": 4100,
+      "rate": 1885,
+      "rack": 2900,
       "left": 5,
       "roomName": "Business Class Room"
     },
     "executive": {
-      "rate": 2990,
-      "rack": 4600,
+      "rate": 2210,
+      "rack": 3400,
       "left": 2,
       "roomName": "Executive Class Room"
     },
