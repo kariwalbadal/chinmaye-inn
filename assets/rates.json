@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-22T21:56:05.281Z",
+  "updated": "2026-10-23T08:44:08.625Z",
   "night": "tonight",
   "checkin": "2026-10-23",
   "roomName": "Business Class Room",
@@ -13,19 +13,19 @@
     "business": {
       "rate": 2665,
       "rack": 4100,
-      "left": 3,
+      "left": 8,
       "roomName": "Business Class Room"
     },
     "executive": {
       "rate": 2990,
       "rack": 4600,
-      "left": 8,
+      "left": 15,
       "roomName": "Executive Class Room"
     },
     "deluxe": {
       "rate": 5004,
       "rack": 7699,
-      "left": 1,
+      "left": 5,
       "roomName": "Deluxe Suite"
     }
   },
