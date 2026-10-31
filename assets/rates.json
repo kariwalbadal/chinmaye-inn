@@ -1,7 +1,7 @@
 {
-  "updated": "2026-10-31T09:52:10.125Z",
+  "updated": "2026-10-31T19:26:10.564Z",
   "night": "tonight",
-  "checkin": "2026-10-31",
+  "checkin": "2026-11-01",
   "roomName": "Executive Class Room",
   "direct": 2990,
   "strikethrough": 4600,
@@ -11,15 +11,15 @@
   "otaRoomKey": null,
   "rooms": {
     "business": {
-      "rate": 3315,
-      "rack": 5100,
+      "rate": 3965,
+      "rack": 6100,
       "left": 10,
       "roomName": "Business Class Room"
     },
     "executive": {
       "rate": 2990,
       "rack": 4600,
-      "left": 2,
+      "left": 4,
       "roomName": "Executive Class Room"
     },
     "deluxe": {
