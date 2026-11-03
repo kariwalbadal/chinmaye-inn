@@ -1,25 +1,25 @@
 {
-  "updated": "2026-11-03T11:11:12.880Z",
+  "updated": "2026-11-03T21:11:04.703Z",
   "night": "tonight",
-  "checkin": "2026-11-03",
+  "checkin": "2026-11-04",
   "roomName": "Business Class Room",
-  "direct": 1820,
-  "strikethrough": 2800,
+  "direct": 2145,
+  "strikethrough": 3300,
   "otas": [],
   "savingsPct": null,
   "available": true,
   "otaRoomKey": null,
   "rooms": {
     "business": {
-      "rate": 1820,
-      "rack": 2800,
-      "left": 5,
+      "rate": 2145,
+      "rack": 3300,
+      "left": 7,
       "roomName": "Business Class Room"
     },
     "executive": {
       "rate": 2990,
       "rack": 4600,
-      "left": 8,
+      "left": 9,
       "roomName": "Executive Class Room"
     },
     "deluxe": {
