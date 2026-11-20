@@ -1,30 +1,27 @@
 {
-  "updated": "2026-11-20T00:55:52.995Z",
+  "updated": "2026-11-20T11:58:53.267Z",
   "night": "tonight",
   "checkin": "2026-11-20",
-  "roomName": "Business Twin Bed Room",
-  "direct": 2255,
-  "strikethrough": 4100,
+  "roomName": "Executive Class Room",
+  "direct": 2475,
+  "strikethrough": 4500,
   "otas": [],
   "savingsPct": null,
   "available": true,
   "otaRoomKey": null,
   "rooms": {
     "business": {
-      "rate": 2255,
-      "rack": 4100,
-      "left": 2,
-      "roomName": "Business Twin Bed Room"
+      "rate": null
     },
     "executive": {
-      "rate": 2530,
-      "rack": 4600,
+      "rate": 2475,
+      "rack": 4500,
       "left": 7,
       "roomName": "Executive Class Room"
     },
     "deluxe": {
-      "rate": 4400,
-      "rack": 8000,
+      "rate": 3850,
+      "rack": 7000,
       "left": 1,
       "roomName": "Deluxe Suite"
     }
