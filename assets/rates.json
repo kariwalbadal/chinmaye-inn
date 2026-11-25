@@ -1,26 +1,32 @@
 {
-  "updated": "2026-11-24T23:59:03.273Z",
-  "night": "tonight",
-  "checkin": "2026-11-25",
+  "updated": "2026-11-25T02:47:55.898Z",
+  "night": "tomorrow",
+  "checkin": "2026-11-26",
   "roomName": "Business Class Room",
-  "direct": 3355,
-  "strikethrough": 6100,
+  "direct": 2255,
+  "strikethrough": 4100,
   "otas": [],
   "savingsPct": null,
   "available": true,
   "otaRoomKey": null,
   "rooms": {
     "business": {
-      "rate": 3355,
-      "rack": 6100,
-      "left": 2,
+      "rate": 2255,
+      "rack": 4100,
+      "left": 4,
       "roomName": "Business Class Room"
     },
     "executive": {
-      "rate": null
+      "rate": 2530,
+      "rack": 4600,
+      "left": 4,
+      "roomName": "Executive Class Room"
     },
     "deluxe": {
-      "rate": null
+      "rate": 3850,
+      "rack": 7000,
+      "left": 2,
+      "roomName": "Deluxe Suite"
     }
   },
   "source": "STAAH booking engine · WatchMyRate"
